@@ -1,0 +1,16 @@
+CREATE SEQUENCE member_seq START WITH 1 INCREMENT BY 1;
+
+create table member(
+    num number primary key,
+    id varchar2(20) not null unique,
+    pw varchar2(20) not null,
+    name varchar2(50),
+    email varchar2(50)
+);
+
+CREATE OR REPLACE TRIGGER trg_member_num
+    BEFORE INSERT ON member
+    FOR EACH ROW
+BEGIN
+    :NEW.num := member_seq.NEXTVAL;
+END;
