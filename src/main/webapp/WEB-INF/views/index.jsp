@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>main이다</h2>
+	<h2>index이다</h2>
 </body>
 </html>

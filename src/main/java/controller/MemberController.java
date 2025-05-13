@@ -11,7 +11,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.MemberService;
 import service.MemberServiceImpl;
 
-@WebServlet({"/main", "/member/*"})
+@WebServlet({"/", "/member/*"})
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +31,9 @@ public class MemberController extends HttpServlet {
 		
 		MemberService service = new MemberServiceImpl();
 		switch (command) {
+		case "/":
+			request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
+			break;
 		case "/main":
 			request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
 			break;
