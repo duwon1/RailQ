@@ -1,0 +1,52 @@
+@charset "UTF-8";
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+div {
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+}
+
+.date-wrap {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-pop {
+    font-size: 2rem;
+}
+
+.btn-date {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.btn-arrow {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.btn_bf {
+    background-image: url("");
+}
+
+.btn_nt {
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__arrows/line-arrow__right--black.svg");
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
