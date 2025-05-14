@@ -1,30 +1,49 @@
 @charset "UTF-8";
-html, body {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 a {
     text-decoration: none;
-}
-div {
-    border: 1px solid black;
-    box-sizing: border-box;
+    color: black;
 }
 
-.container {
+div {
+    /* border: 1px solid black; */
+}
+
+.top-container {
     width: 100%;
-    height: 100px;
+    background-color: #078eb9;
+    height: 110px;
+    line-height: 110px;
+}
+
+.top-container>.sm-title {
+    color: white;
     text-align: center;
 }
 
+.container {
+    width: 80%;
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* 요일선택 */
 .date-wrap {
     display: flex;
     justify-content: center;
+    padding: 20px;
 }
 
-.btn-pop {
-    font-size: 2rem;
+.day-type {
+    font-size: 1.5rem;
 }
 
 .btn-date {
@@ -33,20 +52,346 @@ div {
 }
 
 .btn-arrow {
-    display: inline-block;
-    border: 1px solid black;
+    display: block;
     border-radius: 50%;
-    padding: 20px;
+    width: 35px;
+    height: 35px;
 }
 
-.btn_bf {
-    background-image: url("");
-}
-
-.btn_nt {
-    background-image: url("https://www.korail.com/src/assets/common/img/icon__arrows/line-arrow__right--black.svg");
+.btn-bf {
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__arrows/line-arrow__left--black.svg");
     background-position: center;
-    background-size: 100%;
+    background-size: 30%;
     background-repeat: no-repeat;
 }
+
+.btn-nt {
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__arrows/line-arrow__right--black.svg");
+    background-position: center;
+    background-size: 30%;
+    background-repeat: no-repeat;
+}
+
+/* 역, 사람선택 */
+.selectArea-wrap {
+    width: 100%;
+    display: flex;
+    background-color: #f4f5f9;
+    border-radius: 40px;
+    border: 1px solid #dddddd;
+}
+
+.left-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    gap: 10px;
+    padding: 10px;
+    border-right: 1px solid #dddddd;
+}
+
+.left-wrap>.btn-pop {
+    width: 40%;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 30px;
+    background-color: white;
+    border: 1px solid #dddddd;
+}
+
+.start {
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__common/ico_airplane_svg_black.svg");
+    background-repeat: no-repeat;
+    background-position: 20px center;
+}
+
+.last {
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__common/ico_map_svg_black.svg");
+    background-repeat: no-repeat;
+    background-position: 20px center;
+}
+
+.btn-box {
+    width: 40px;
+    height: 40px;
+}
+
+.btn-box>.btn-change {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #dddddd;
+    border-radius: 50%; 
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__common/change_icon-blue_svg__color=black.svg");
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.left-wrap>.btn-recom {
+    width: 25%;
+    line-height: 50px;
+    border-radius: 30px;
+    background-color: white;
+    border: 1px solid #dddddd;
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__common/ico_pp_svg_black.svg");
+    background-repeat: no-repeat;
+    background-position: 20px center;
+}
+
+.right-wrap {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+.right-wrap>.select {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    border-radius: 30px;
+    border: 1px solid #dddddd;
+    background-color: white;
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__arrows/icon__arrow-down--gray.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 10px) center;
+}
+
+.select>h3 {
+    margin-left: 20px;
+}
+
+/* checkbox 왕복, 인접역 등등 */
+.search-option-check-wrap {
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    padding: 10px 0 10px 0;
+    margin-bottom: 50px
+}
+
+.search-option-bar-check-wrap {
+    border: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-option-bar-checkbox {
+    width: 25px;
+    height: 25px;
+}
+
+/* 열차티켓 보여주는 곳 */
+.rail-inner {
+		overflow: hidden;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+    margin: 20px 0 20px 0;
+}
+
+.rail-inner>.li-color {
+	background-color: #0054a6;
+	width: 5px; 
+}
+
+.info-inner {
+    width: 70%;
+}
+
+.price-inner {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.price-box {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    border-left: 1px solid #dddddd;
+}
+
+.price-inner>.price-box:nth-of-type(2) {
+    border-radius: 0 10px 10px 0;
+}
+
+.price-box>p {
+    font-size: 0.9rem;
+}
+
+.txt-gr {
+    color: green;
+}
+
+.info-inner {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+.flag-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20%;
+}
+
+.train_ktx_ticket {
+    width: auto;
+    height: 18px;
+    background-image: url("https://www.korail.com/src/assets/common/img/train_ktx_ticket.png");
+    background-repeat: no-repeat;
+}
+
+.flag-wrap>.num {
+    text-align: left;
+}
+
+.date-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+.date-box>h2 {
+    font-size: 1.3rem;
+}
+
+.date-box>span {
+    font-size: 0.9rem;
+}
+
+.date-box>.s-txt {
+    color: gray;
+}
+
+/* 더보기 */
+.bottom-container {
+    display: block;
+    margin-bottom: 100px;
+}
+
+.more {
+    margin: 40px auto;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border: 1px solid #dddddd;
+    border-radius: 30px;
+}
+
+.tomorrow {
+    width: 300px;
+}
+
+/* 하단 따라오는 바 */
+.bottom-bar-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #d4e1f5;
+    text-align: center;
+    z-index: 999;
+}
+
+.reserv_btn {
+    border: 0;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    border-radius: 10px 10px 0 0;
+    background-color: #d4e1f5;
+    width: 120px;
+    height: 44px;
+    background-image: url("https://www.korail.com/src/assets/common/img/common/reserv_btn.png");
+    background-position: center;
+    background-size: 28px;
+    background-repeat: no-repeat;
+}
+
+.sm-container {
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1400px;
+    height: 100%;
+    display: flex;
+}
+
+.ticket_reserv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reserv_first {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.reserv_first>span:nth-child(1) {
+    font-weight: 700;
+    font-size: 1.15rem;
+}
+
+.reserv_first>span:nth-child(2) {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0054a6;
+}
+
+.reserv_center {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.reserv-center-item {
+    width: 100px;
+    padding: 2.5px;
+    background-color: white;
+    border-radius: 30px;
+    
+}
+
+.reserv-center-item>p {
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.buy-item {
+    background-color: #0054a6;
+    color: white;
+    width: 80px;
+    padding: 8px;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.cursor:hover {
+    background-color: #e5f2ff;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
 
