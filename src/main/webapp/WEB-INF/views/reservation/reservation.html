@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>RailQ</title>
 <link rel="stylesheet" href="../../../css/reservation.css">
+<script src="../../../js/reservation.js"></script>
 </head>
 <body>
     <div class="top-container">
@@ -14,7 +15,7 @@
 	<div class="container">
         <div class="date-wrap">
             <a href="#" class="btn-arrow btn-bf"></a>
-            <a href="#" class="day-type"><span class="btn-date">0000-00-00(화) 00:00</span></a>
+            <a href="#" class="day-type" onclick="document.querySelector('.modal').style.display = 'block'"><span class="btn-date">0000-00-00(화) 00:00</span></a>
             <a href="#" class="btn-arrow btn-nt"></a>
         </div>
 
@@ -87,17 +88,17 @@
 
     <!-- 더보기 및 다음날 조회하기 -->
     <div class="bottom-container">
-        <div class="more">
+        <div class="more cursor">
             <h3 class="page_group">더보기</h3>
         </div>
-        <div class="more tomorrow">
+        <div class="more tomorrow cursor">
             <h3 class="page_group">다음날 (25년05월15일) 조회</h3>
         </div>
     </div>
 
     <div class="bottom-bar-container">
         <div class="reserv_wrapbtn">
-            <button type="button" class="reserv_btn"></button>
+            <button type="button" class="reserv_btn" onclick="reserv_btn_click()"></button>
         </div>
         <div class="sm-container">
             <div class="ticket_reserv">

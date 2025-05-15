@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.MemberVO;
-import utill.DB;
+import utill.DBConn;
 
 public class MemberDao {
 	
@@ -16,9 +16,9 @@ public class MemberDao {
     private ResultSet rs;
     
 	public MemberVO getLogin(String string) {
-		conn = DB.getInstace().getConnection();
-		String sql = "select * from member where num = ?";
 		try {
+			conn = DBConn.getConnection();
+			String sql = "select * from member where num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 2);
 			rs = pstmt.executeQuery();
@@ -33,9 +33,10 @@ public class MemberDao {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			DBConn.close(rs, pstmt, conn);
 		}
 		
-		DB.close(conn, pstmt, rs);
 		
 		return vo;
 	}
