@@ -1,4 +1,4 @@
-<%@page import="dto.MemberVO"%>
+<%@page import="dto.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%MemberVO vo = (MemberVO)request.getAttribute("member"); %>
+	<%
+	MemberDto vo = (MemberDto)request.getAttribute("member");
+	%>
 
 	<p>번호 : <%=vo.getNum() %></p>
 	<p>아이디 : <%=vo.getId() %></p>

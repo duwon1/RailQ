@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 
-import dto.MemberVO;
+import dto.MemberDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -38,7 +38,7 @@ public class MemberController extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(request, response);	
 			break;
 		case "/member/test":
-			MemberVO vo = service.getLogin();
+			MemberDto vo = service.getLogin();
 			request.setAttribute("member", vo);
 			request.getRequestDispatcher("/WEB-INF/views/member/test.jsp").forward(request, response);
 			break;

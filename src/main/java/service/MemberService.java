@@ -1,9 +1,9 @@
 package service;
 
-import dto.MemberVO;
+import dto.MemberDto;
 
 public interface MemberService {
 
-	MemberVO getLogin();
+	MemberDto getLogin();
 
 }
