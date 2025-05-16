@@ -18,7 +18,7 @@ public class MemberDao {
 	public MemberDto getLogin(String string) {
 		try {
 			conn = DBConn.getConnection();
-			String sql = "select * from member where num = ?";
+			String sql = "SELECT * FROM member WHERE num = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, 2);
 			rs = pstmt.executeQuery();

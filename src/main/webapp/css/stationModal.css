@@ -2,13 +2,25 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    border: 0;
+}
+
+ul, li, a {
+    list-style-type: none;
+    text-decoration-line: none;
+}
+
+a:visited {
+    color: inherit;
 }
 
 body {
     height: 2000px;
 }
 
-.modal-zindex {
+
+/* 모달 배경  */
+.station-modal-zindex {
     position: fixed;
     width: 100%;
     height: 100vh;
@@ -16,15 +28,173 @@ body {
     z-index: 999;
     left: 0;
     top: 0;
+    display: none;
 }
 
+/* 모달창 부분 */
 .station-modal-conainer {
     position: fixed;
     background-color: white;
     width: 800px;
-    height: 700px;
+    max-height: 80vh; 
     left: 50%;
     top: 5%;
     transform: translate(-50%);
-    
+    overflow-y: auto;
+    box-sizing: border-box;
 }
+@media (max-width: 1000px) {
+    .station-modal-conainer {
+        width: 500px;
+    }
+}
+
+.tit_wrap {
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.title-title {
+    font-size: 1.5rem;
+    font-weight:bold;
+}
+
+.modal-btn_close {
+    background-image: url("https://www.korail.com/src/assets/common/img/ico_pop-close-black.png");
+    background-size: cover;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 38px;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+}
+
+/* 모달 메인 */
+.con-wrap {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+}
+
+/* 모달 검색창 */
+.sch-box {
+    position: relative;
+    width: 100%;
+}
+
+.sch-box input {
+    display: inline;
+    width: 100%;
+    height: 40px;
+    background-color: #e5f2ff;
+    border-bottom: 1px solid #bbbbbb;
+    font-size: 1.2rem;
+    padding-right: var(--spacing-32);
+    text-overflow: ellipsis;
+    text-align: center;
+    max-width: none;
+}
+
+.sch-box input:hover {
+    border-color: black;
+}
+
+.modal-btn-sch {
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    right: 0.4444rem;
+    bottom: 0.5555rem;
+    background-image: url("https://www.korail.com/src/assets/common/img/search_black.png");
+}
+
+/* 지역 고르는 탭 */
+.tab-content {
+    position: relative;
+    width: 100%;
+}
+
+.tab-bar {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+    height: 50px;
+    border-bottom: 1px solid #cccccc;
+}
+
+.tab-btn {
+    width: 25%;
+    float: left;
+    border-style: solid;
+    border-width: 1px 1px 0 1px;
+    border-color: #cccccc;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 10px 10px 10px 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.tab-btn.s {
+    color: #0054a6;
+    padding-bottom: 8px;
+    border-bottom: 3px solid #0054a6;
+}
+
+.tab-btn button {
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 100%;
+    cursor: pointer;
+}
+
+/* 지역선택, 역선택 부분 */
+.station-content-ch-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tit {
+    flex: 0 0 100%;
+}
+
+.tit p {
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+
+.content-a {
+    flex: 0 0 calc(25% - 8px); /* 한 줄에 4개씩 배치되게 설정냥 */
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #cccccc;
+    border-radius: 30px;
+    font-size: 1.1rem;
+}
+.content-a>a {
+	color: inherit;
+}
+
+#content-a-id {
+	background-color: #0054a6;
+	color: white;
+}
+
+/* 마우스 올릴떄 */
+.cursor:hover {
+    background-color: #e5f2ff;
+    cursor: pointer;
+    border: 1px solid gray;
+}
+
