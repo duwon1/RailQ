@@ -5,17 +5,17 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import dto.MemberVO;
+import dto.MemberDto;
 import utill.DBConn;
 
 public class MemberDao {
 	
-	private MemberVO vo;
+	private MemberDto mDto;
 	private Connection conn;
     private PreparedStatement pstmt;
     private ResultSet rs;
     
-	public MemberVO getLogin(String string) {
+	public MemberDto getLogin(String string) {
 		try {
 			conn = DBConn.getConnection();
 			String sql = "select * from member where num = ?";
@@ -24,11 +24,11 @@ public class MemberDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				vo = new MemberVO();
-	            vo.setNum(rs.getInt("num"));
-	            vo.setId(rs.getString("id"));
-	            vo.setPw(rs.getString("pw"));
-	            vo.setName(rs.getString("name"));
+				mDto = new MemberDto();
+				mDto.setNum(rs.getInt("num"));
+				mDto.setId(rs.getString("id"));
+				mDto.setPw(rs.getString("pw"));
+				mDto.setName(rs.getString("name"));
 			}
 			
 		} catch (SQLException e) {
@@ -38,7 +38,7 @@ public class MemberDao {
 		}
 		
 		
-		return vo;
+		return mDto;
 	}
     
 	
