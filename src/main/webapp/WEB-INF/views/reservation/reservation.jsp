@@ -1,4 +1,5 @@
-<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,27 +12,25 @@
     <div class="top-container">
         <h1 class="sm-title">승차권 예매</h1>
     </div>
-
 	<div class="container">
         <div class="date-wrap">
             <a href="#" class="btn-arrow btn-bf"></a>
-            <a href="#" class="day-type" onclick="document.querySelector('.modal').style.display = 'block'"><span class="btn-date">0000-00-00(화) 00:00</span></a>
+            <a href="#" class="day-type"><span class="btn-date">0000-00-00(화) 00:00</span></a>
             <a href="#" class="btn-arrow btn-nt"></a>
         </div>
-
         <div class="selectArea-wrap">
-            <div class="left-wrap">
+        	<div class="left-wrap">
                 <div class="btn-pop cursor">
-                    <h3 class="start"><a href="#">서울</a></h3>
+                    <a href="#none" onclick="stationModalOpen()"><h3 class="start">서울</h3></a>
                 </div>
                 <div class="btn-box">
-                    <button type="button" class="btn-change cursor"></button>
+                    <button type="button" class="btn-change cursor" ></button>
                 </div>
                 <div class="btn-pop cursor">
-                    <h3 class="last"><a href="#" class="">미국</a></h3>
+                    <a href="#none" onclick="stationModalOpen()"><h3 class="last">미국</h3></a>
                 </div>
-                <div class="btn-recom cursor">
-                    <h3><a href="#">총1명</a></h3>
+                <div class="btn-recom cursor" id="person-pop">
+                   <a href="#none" onclick="personModalOpen()"><h3>총1명</h3></a>
                 </div>
             </div>
             <div class="right-wrap">
@@ -119,5 +118,7 @@
             </div>
         </div>
     </div>
+    <jsp:include page="modal/stationModal.jsp" />
+    <jsp:include page="modal/personModal.jsp" />
 </body>
 </html>
