@@ -43,11 +43,6 @@ body {
     overflow-y: auto;
     box-sizing: border-box;
 }
-@media (max-width: 1000px) {
-    .station-modal-conainer {
-        width: 500px;
-    }
-}
 
 .tit_wrap {
     position: relative;
@@ -175,7 +170,6 @@ body {
 .content-a {
     flex: 0 0 calc(25% - 8px); /* 한 줄에 4개씩 배치되게 설정냥 */
     box-sizing: border-box;
-    background-color: #f2f2f2;
     padding: 10px;
     text-align: center;
     border: 1px solid #cccccc;
@@ -197,4 +191,11 @@ body {
     cursor: pointer;
     border: 1px solid gray;
 }
+
+@media (max-width: 1000px) {
+    .station-modal-conainer {
+        width: 500px;
+    }
+}
+
 
