@@ -21,16 +21,16 @@
         <div class="selectArea-wrap">
         	<div class="left-wrap">
                 <div class="btn-pop cursor">
-                    <a href="#none" onclick="stationModalOpen()"><h3 class="start">서울</h3></a>
+                    <h3 class="start"><a href="#none" onclick="stationModalOpen()">서울</a></h3>
                 </div>
                 <div class="btn-box">
                     <button type="button" class="btn-change cursor" ></button>
                 </div>
                 <div class="btn-pop cursor">
-                    <a href="#none" onclick="stationModalOpen()"><h3 class="last">미국</h3></a>
+                    <h3 class="last"><a href="#none" onclick="stationModalOpen()">미국</a></h3>
                 </div>
                 <div class="btn-recom cursor" id="person-pop">
-                   <a href="#none" onclick="personModalOpen()"><h3>총1명</h3></a>
+                   <h3><a href="#none" onclick="personModalOpen()">총1명</a></h3>
                 </div>
             </div>
             <div class="right-wrap">
@@ -94,8 +94,8 @@
             <h3 class="page_group">다음날 (25년05월15일) 조회</h3>
         </div>
     </div>
-
-    <div class="bottom-bar-container">
+    
+    <div class="bottom-bar-container down">
         <div class="reserv_wrapbtn">
             <button type="button" class="reserv_btn" onclick="reserv_btn_click()"></button>
         </div>
