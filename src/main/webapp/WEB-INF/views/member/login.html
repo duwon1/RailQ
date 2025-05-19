@@ -1,0 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 페이지</title>
+  <link rel="stylesheet" href="./login.css">
+  
+</head>
+<body>
+    <div class="wrapper">
+        <div class="login-box">
+            <h1>RAILQ</h1>
+            <h2>로그인</h2>
+            <form id="loginForm" onsubmit="login(); return false;">
+                <input  type="text" placeholder="아이디" id="username" required/>
+                <input type="password" placeholder="비밀번호" id="password" required/>
+                <button type="submit">로그인</button>
+            </form>
+            <div class="footer">
+                <a href="./Find/find.html">회원정보 찾기</a>
+                |
+                <a href="./Terms/terms.html">회원가입</a>
+            </div>
+        </div>
+    </div>
+    <script src="login.js"></script>
+</body>
+</html>

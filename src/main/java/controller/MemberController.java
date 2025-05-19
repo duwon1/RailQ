@@ -42,7 +42,17 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("member", vo);
 			request.getRequestDispatcher("/WEB-INF/views/member/test.jsp").forward(request, response);
 			break;
-		case "3":
+		case "/member/login":
+			request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+			break;
+		case "/member/join":
+			request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
+			break;
+		case "/member/terms":
+			request.getRequestDispatcher("/WEB-INF/views/member/terms.jsp").forward(request, response);
+			break;
+		case "/member/find":
+			request.getRequestDispatcher("/WEB-INF/views/member/find.jsp").forward(request, response);
 			break;
 		}	
 	}

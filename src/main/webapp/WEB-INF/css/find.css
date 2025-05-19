@@ -1,0 +1,89 @@
+* {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  .wrapper{
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .find-box {
+    padding: 40px;
+    margin: 10px;
+  }
+  input::placeholder {
+    color: black;
+  }
+  #password{
+    background-color: rgb(146, 179, 241);
+  }
+  #username{
+    background-color: rgb(146, 179, 241);
+  }
+  .find-box h1{
+    text-align: center;
+    margin: auto;
+  }
+  .find-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .find-box button {
+    width: 100%;
+    padding: 12px 15px;
+    margin-top: 30px;
+    background-color: skyblue;
+    color: white;
+    border: none;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+ 
+  .find-box button:hover {
+    background-color: rgb(22, 80, 103);
+  }
+  .tab-buttons {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    width: 40vw;
+    gap: 10px;
+}
+.tab-buttons button { 
+    font-size: 14px;
+    padding: 8px 10px;
+    border: 1px solid black;
+    transition: background-color 0.3s ease;
+    background-color: white;
+    color: black;
+}
+.form-section {
+    display: none;
+    margin-top: 10px;
+}
+.form-section.active {
+    display: block;
+    width: 100%;
+}
+input {
+    display: block;
+    border: 1px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+}
+.tab-buttons button.selected {
+  background-color: rgb(148, 145, 145);
+  color: black;
+}

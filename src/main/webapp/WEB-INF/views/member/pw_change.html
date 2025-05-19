@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAILQ - 비밀번호 변경</title>
+    <link rel="stylesheet" href="pw_change.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 메인 컨텐츠 영역 -->
+        <div class="main-content">
+            <div class="logo">RAILQ</div>
+
+            <!-- 비밀번호 변경 페이지 -->
+            <div id="change-password-page" class="content-box">
+                <div class="page-title">비밀번호 변경</div>
+                <div class="form-content">
+                    
+                    
+                    <div class="password-table">
+                        <table class="info-table">
+                            <tr>
+                                <td>현재 비밀번호</td>
+                                <td><input type="password" id="current-password"></td>
+                            </tr>
+                            <tr>
+                                <td>비밀번호 변경</td>
+                                <td><input type="password" id="new-password"></td>
+                            </tr>
+                            <tr>
+                                <td>비밀번호 확인</td>
+                                <td><input type="password" id="confirm-password"></td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="button-container">
+                        <button type="button" class="submit-button" onclick="changePassword()">확인</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="pw_change.js"></script>
+</body>
+</html>
