@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>RailQ</title>
-<link rel="stylesheet" href="../../../css/reservation.css">
-<script src="../../../js/reservation.js"></script>
+<link rel="stylesheet" href="../../css/reservation.css">
+<script src="../../js/reservation.js"></script>
 </head>
 <body>
     <div class="top-container">

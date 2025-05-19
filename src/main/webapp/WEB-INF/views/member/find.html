@@ -1,0 +1,41 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>아이디/비밀번호 찾기</title>
+    <link rel="stylesheet" href="find.css" />
+</head>
+<body>
+    <div class="wrapper">
+        <div class="find-box">
+            <h1>RAILQ</h1>
+            <h2>회원정보 찾기</h2>
+            <!-- 버튼 -->
+            <div class="tab-buttons">
+                <button id="btn-find-id" type="button">아이디 찾기</button>
+                <button id="btn-find-password" type="button">비밀번호 찾기</button>
+            </div>
+            <!-- 아이디 찾기 영역 -->
+            <div id="find-id" class="form-section active">
+                <form id="form-find-id">
+                    <input type="text" placeholder="이름" id="name-for-id" required />
+                    <input type="text" placeholder="전화번호" id="phone-for-id" required />
+                    <button type="submit" id="submit-id">확인</button>
+                </form>
+            </div>
+
+            <!-- 비밀번호 찾기 영역 -->
+            <div id="find-password" class="form-section">
+                <form id="form-find-pw">
+                    <input type="text" placeholder="아이디" id="id-for-pw" required />
+                    <input type="text" placeholder="전화번호" id="phone-for-pw" required />
+                    <button type="submit" id="submit-pw">확인</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="find.js"></script>
+</body>
+</html>
