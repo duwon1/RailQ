@@ -1,0 +1,153 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul, li {
+    list-style-type: none;
+}
+
+.top-container {
+    width: 100%;
+    background-color: #078eb9;
+    height: 110px;
+    line-height: 110px;
+}
+
+.top-container>.sm-title {
+    color: white;
+    text-align: center;
+}
+
+.container {
+    width: 50%;
+    max-width: 1400px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/* 선택한 티켓 정보 */
+.rail-inner {
+	display: flex;
+	overflow: hidden;
+    width: 100%;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    margin: 20px 0 20px 0;
+}
+
+.rail-inner>.li-color {
+	background-color: #0054a6;
+	width: 5px; 
+}
+
+.info-inner {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+}
+
+.flag-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+
+.train_ktx_ticket {
+    width: auto;
+    width: 60px;
+    height: 24px;
+    background-image: url("https://www.korail.com/src/assets/common/img/train_ktx_ticket.png");
+    background-repeat: no-repeat;
+}
+
+.flag-wrap>.ticket-first {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.flag-wrap>.ticket-first:nth-child(3) {
+    color: #0054a6;
+}
+
+.date-box {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+}
+.date-box>h2 {
+    font-size: 1.3rem;
+}
+
+.date-box>span {
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.date-box>.s-txt {
+    color: gray;
+}
+
+/* 결제하기버튼 */
+.btnWrap {
+    display: flex;
+    margin: 40px;
+    justify-content: center;
+}
+
+.btnWrap button {
+    background-color: white;
+    border: 1px solid #bbb;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    width: 140px;
+    cursor: pointer;
+}
+
+.btnWrap button:hover {
+    border: 1px solid gray;
+}
+
+/* 안내 및 꼭 알아두세요! */
+.uf_info-wrap {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid #bbb;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+}
+
+.uf_info-wrap h2 {
+    margin: 20px 0;
+}
+
+.uf_list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.uf_list a {
+		color: #0054a6;
+}
+
+.uf_list li {
+    list-style-type: square;
+    list-style-position: inside;
+    font-size: 1.1rem;
+}
