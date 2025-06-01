@@ -50,8 +50,13 @@ body {
 
 .tit_wrap {
     position: relative;
-    padding: 20px;
+    padding: 20px 0;
     border-bottom: 1px solid #cccccc;
+}
+
+.tit {
+		width: 90%;
+		margin: 0 auto;
 }
 
 .title-title {
@@ -65,7 +70,7 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 38px;
+    right: 0;
     width: 23px;
     height: 23px;
     cursor: pointer;
@@ -112,6 +117,12 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
+}
+
+.flo-right span {
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }
 
 .flo-btn {

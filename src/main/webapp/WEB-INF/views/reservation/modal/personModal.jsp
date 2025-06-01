@@ -3,9 +3,11 @@
 <script src="../../../../js/personModal.js"></script>
 <div class="person-modal-zindex">
     <div class="person-modal-conainer">
-        <div class="tit_wrap">
-            <span class="title-title">기차역 조회</span>
-            <button type="button" class="modal-btn_close" onclick="personModalClose()"></button>
+       <div class="tit_wrap">
+		        <div class="tit">
+		            <span class="title-title">할인쿠폰 조회</span>
+		            <button type="button" class="modal-btn_close" onclick="personModalClose()"></button>
+		        </div>
         </div>
         <div class="con-wrap">
             <ul class="content-ch-list">
@@ -13,7 +15,8 @@
                     <p>어른(13세 이상)</p>
                     <div class="flo-right">
                         <button type="button" class="down-btn flo-btn"></button>
-                        <span>1</span>
+                        <span>0</span>
+                        <input type="hidden" name="adult" value="0">
                         <button type="button" class="up-btn flo-btn"></button>
                     </div>
                 </li>
@@ -21,7 +24,8 @@
                     <p>어린이(6 ~ 12세)</p>
                     <div class="flo-right">
                         <button type="button" class="down-btn flo-btn"></button>
-                        <span>1</span>
+                        <span>0</span>
+                        <input type="hidden" name="child" value="0">
                         <button type="button" class="up-btn flo-btn"></button>
                     </div>
                 </li>
@@ -29,7 +33,8 @@
                     <p>경로(65세 이상)</p>
                     <div class="flo-right">
                         <button type="button" class="down-btn flo-btn"></button>
-                        <span>1</span>
+                        <span>0</span>
+                        <input type="hidden" name="elderly" value="0">
                         <button type="button" class="up-btn flo-btn"></button>
                     </div>
                 </li>
@@ -37,7 +42,8 @@
                     <p>국가유공자</p>
                     <div class="flo-right">
                         <button type="button" class="down-btn flo-btn"></button>
-                        <span>1</span>
+                        <span>0</span>
+                        <input type="hidden" name="nice" value="0">
                         <button type="button" class="up-btn flo-btn"></button>
                     </div>
                 </li>

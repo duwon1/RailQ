@@ -1,11 +1,18 @@
-b<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@page import="java.util.List"%>
+<%@page import="dto.CityDto"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+
 <link rel="stylesheet" href="../../../../css/stationModal.css">
 <script src="../../../../js/stationModal.js"></script>
+
 <div class="station-modal-zindex">
     <div class="station-modal-conainer">
         <div class="tit_wrap">
-            <span class="title-title">기차역 조회</span>
-            <button type="button" class="modal-btn_close" onclick="stationModalClose()"></button>
+            <div class="tit">
+                <span class="title-title">할인쿠폰 조회</span>
+                <button type="button" class="modal-btn_close" onclick="stationModalClose()"></button>
+            </div>
         </div>
         <div class="con-wrap">
             <div class="sch-box">
@@ -17,54 +24,25 @@ b<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
                     <li class="tab-btn s"><button type="button">주요역</button></li>
                     <li class="tab-btn"><button type="button">지역별</button></li>
                 </ul>
-                <ul class="station-content-ch-list">
-                    <li class="tit"><p>01.지역선택</p></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="tit"><p>02.역선택</p></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
-                    <li class="content-a cursor"><a href="#">서울</a></li>
-                    <li class="content-a cursor"><a href="#">강원</a></li>
-                    <li class="content-a cursor"><a href="#">전북</a></li>
-                    <li class="content-a cursor"><a href="#">제주</a></li>
-                    <li class="content-a cursor"><a href="#">충남</a></li>
+
+                <p class="sm-tit">01.지역선택</p>
+                <ul class="station-content-ch-list" id="city-list">
+                    <c:forEach var="c" items="${cityList}">
+                        <li class="content-a cursor">
+                            <a href="#" class="city-link" data-citycode="${c.citycode}">${c.cityname}</a>
+                        </li>
+                    </c:forEach>
+                </ul>
+
+                <p class="sm-tit">02.역선택</p>
+                <ul class="station-content-ch-list" id="region-list">
+                    <c:forEach var="c" items="${regionList}">
+                        <li class="content-a cursor">
+                            <a href="#" class="region-link" data-nodeid="${c.nodeid}">${c.nodename}</a>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
         </div>
-    </div> 
+    </div>
 </div>

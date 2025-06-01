@@ -1,7 +1,4 @@
-@charset "UTF-8";
-*,
-*::before,
-*::after {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -10,6 +7,10 @@
 a {
     text-decoration: none;
     color: black;
+}
+
+ul, li {
+    list-style-type: none;
 }
 
 div {
@@ -42,21 +43,30 @@ button {
 /* 요일선택 */
 .date-wrap {
     display: flex;
+    gap: 20px;
+    margin: 0 auto;
+    width: 500px;
     justify-content: center;
     padding: 20px;
 }
 
 .day-type {
     font-size: 1.5rem;
+    width: 60%;
+    text-align: left;
+    background-image: url("https://www.korail.com/src/assets/common/img/icon__common/ico_calendar-simple_svg_black.svg");
+    background-position: right center;
+    background-repeat: no-repeat;
 }
 
 .btn-date {
-    margin-right: 20px;
-    margin-left: 20px;
+    width: 100%;
+    font-weight: 700;
 }
 
 .btn-arrow {
     display: block;
+    border: 1px solid #bbb;
     border-radius: 50%;
     width: 35px;
     height: 35px;
@@ -153,6 +163,10 @@ button {
     background-position: 20px center;
 }
 
+.btn-recom a {
+		display: block;
+}
+
 .right-wrap {
     width: 30%;
     display: flex;
@@ -163,11 +177,12 @@ button {
 }
 
 .right-wrap>.select {
-    display: flex;
+    position: relative;
     justify-content: left;
     align-items: center;
     width: 100%;
     height: 50px;
+    line-height: 50px;
     text-align: left;
     border-radius: 30px;
     border: 1px solid #dddddd;
@@ -177,8 +192,39 @@ button {
     background-position: calc(100% - 10px) center;
 }
 
-.select>h3 {
+.select h3 a {
+    display: block;
     margin-left: 20px;
+}
+
+.select.active {
+    border: 1px solid gray; /* 선택 시 강조 */
+}
+
+/* 좌석 및 직통, 환승 리스트 */
+
+.option {
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    top: 55px;
+    border: 1px solid #bbb;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 10px;
+    overflow: hidden;
+    display: none;
+}
+
+.option li a {
+    display: block;
+    padding: 0 10px;
+}
+
+.option li a:hover {
+    cursor: pointer;
+    color: white;
+    background-color: #0054a6;
 }
 
 /* checkbox 왕복, 인접역 등등 */
@@ -260,8 +306,8 @@ button {
 }
 
 .train_ktx_ticket {
-    width: auto;
-    height: 18px;
+    width: 60px;
+    height: 22px;
     background-image: url("https://www.korail.com/src/assets/common/img/train_ktx_ticket.png");
     background-repeat: no-repeat;
 }

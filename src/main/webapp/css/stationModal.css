@@ -14,11 +14,6 @@ a:visited {
     color: inherit;
 }
 
-body {
-    height: 2000px;
-}
-
-
 /* 모달 배경  */
 .station-modal-zindex {
     position: fixed;
@@ -46,8 +41,14 @@ body {
 
 .tit_wrap {
     position: relative;
-    padding: 20px;
+    width: 100%;
     border-bottom: 1px solid #cccccc;
+}
+
+.tit {
+    position: relative;
+
+    
 }
 
 .title-title {
@@ -61,18 +62,10 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 38px;
+    right: 0;
     width: 23px;
     height: 23px;
     cursor: pointer;
-}
-
-/* 모달 메인 */
-.con-wrap {
-    position: relative;
-    width: 90%;
-    margin: 0 auto;
-    padding: 20px 0 20px 0;
 }
 
 /* 모달 검색창 */
@@ -158,31 +151,31 @@ body {
     margin-bottom: 20px;
 }
 
-.tit {
+.sm-tit {
     flex: 0 0 100%;
-}
-
-.tit p {
     font-size: 1.3rem;
     font-weight: 900;
+    margin-bottom: 20px;
 }
 
 .content-a {
     flex: 0 0 calc(25% - 8px); /* 한 줄에 4개씩 배치되게 설정냥 */
     box-sizing: border-box;
-    padding: 10px;
     text-align: center;
     border: 1px solid #cccccc;
     border-radius: 30px;
     font-size: 1.1rem;
 }
+
 .content-a>a {
-	color: inherit;
+		color: inherit;
+		display: block;
+		padding: 10px;
 }
 
 #content-a-id {
-	background-color: #0054a6;
-	color: white;
+		background-color: #0054a6;
+		color: white;
 }
 
 /* 마우스 올릴떄 */

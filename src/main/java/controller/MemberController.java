@@ -31,29 +31,29 @@ public class MemberController extends HttpServlet {
 		
 		MemberService service = new MemberServiceImpl();
 		switch (command) {
-		case "/":
-			request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
-			break;
-		case "/member/loginForm":
-			request.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(request, response);	
-			break;
-		case "/member/test":
-			MemberDto vo = service.getLogin();
-			request.setAttribute("member", vo);
-			request.getRequestDispatcher("/WEB-INF/views/member/test.jsp").forward(request, response);
-			break;
-		case "/member/login":
-			request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
-			break;
-		case "/member/join":
-			request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
-			break;
-		case "/member/terms":
-			request.getRequestDispatcher("/WEB-INF/views/member/terms.jsp").forward(request, response);
-			break;
-		case "/member/find":
-			request.getRequestDispatcher("/WEB-INF/views/member/find.jsp").forward(request, response);
-			break;
+			case "/":
+				request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
+				break;
+			case "/member/loginForm":
+				request.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(request, response);	
+				break;
+			case "/member/test":
+				MemberDto mDto = service.getLogin();
+				request.setAttribute("member", mDto);
+				request.getRequestDispatcher("/WEB-INF/views/member/test.jsp").forward(request, response);
+				break;
+			case "/member/login":
+				request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+				break;
+			case "/member/join":
+				request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
+				break;
+			case "/member/terms":
+				request.getRequestDispatcher("/WEB-INF/views/member/terms.jsp").forward(request, response);
+				break;
+			case "/member/find":
+				request.getRequestDispatcher("/WEB-INF/views/member/find.jsp").forward(request, response);
+				break;
 		}	
 	}
 

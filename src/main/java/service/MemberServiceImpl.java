@@ -7,7 +7,7 @@ public class MemberServiceImpl implements MemberService {
 	
 	private MemberDao dao = new MemberDao();
 
-	@Override
+	
 	public MemberDto getLogin() {
 		return dao.getLogin("1");
 	}
