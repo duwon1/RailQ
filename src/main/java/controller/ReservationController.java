@@ -3,8 +3,6 @@ package controller;
 import java.io.IOException;
 import java.util.List;
 
-import javax.print.attribute.HashPrintRequestAttributeSet;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -16,7 +14,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.ReservationService;
-import service.ReservationServiceImpl;
 
 @WebServlet("/reservation/*")
 public class ReservationController extends HttpServlet {
@@ -36,7 +33,7 @@ public class ReservationController extends HttpServlet {
 		String command = uri.substring(path.length());
 		System.out.println("요청경로 : " + command);
 		
-		ReservationService service = new ReservationServiceImpl();
+		ReservationService service = new ReservationService();
 		switch (command) {
 			case "/reservation":
 				List<CityDto> cList = service.getCityInformation();

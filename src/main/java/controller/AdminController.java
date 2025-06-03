@@ -10,9 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import service.AdminService;
-import service.AdminServiceImpl;
-import service.MemberService;
-import service.MemberServiceImpl;
 
 @WebServlet({"/admin/*"})
 public class AdminController extends HttpServlet {
@@ -32,7 +29,7 @@ public class AdminController extends HttpServlet {
 		String command = uri.substring(path.length());
 		System.out.println("요청경로 : " + command);
 		
-		AdminService service = new AdminServiceImpl();
+		AdminService service = new AdminService();
 		switch (command) {
 			case "/admin":
 				request.getRequestDispatcher("/WEB-INF/views/admin/header.jsp").forward(request, response);

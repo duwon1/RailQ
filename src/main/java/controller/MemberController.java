@@ -8,8 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import service.MemberService;
-import service.MemberServiceImpl;
 
 @WebServlet({"", "/member/*"})
 public class MemberController extends HttpServlet {
@@ -28,13 +28,16 @@ public class MemberController extends HttpServlet {
 		
 		String command = uri.substring(path.length());
 		System.out.println("요청경로 : " + command);
-		
-		MemberService service = new MemberServiceImpl();
+		HttpSession session = request.getSession();
+		MemberService service = new MemberService();
 		switch (command) {
 			case "/":
+				
+				session.setAttribute("member", 1);
 				request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
 				break;
 			case "/member/loginForm":
+				sessionCheck(request, response);
 				request.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(request, response);	
 				break;
 			case "/member/test":
@@ -54,7 +57,23 @@ public class MemberController extends HttpServlet {
 			case "/member/find":
 				request.getRequestDispatcher("/WEB-INF/views/member/find.jsp").forward(request, response);
 				break;
+			case "/member/insertmessage":
+				sessionCheck(request, response);
+				int memberNum = (Integer) session.getAttribute("member");
+				String msg = request.getParameter("msg");
+				
+				service.memberMessage(memberNum, msg);
+				break;
 		}	
+	}
+	
+	protected void sessionCheck(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		HttpSession session = request.getSession(false);
+		if (session == null) {
+		    response.sendRedirect("/member/loginForm");
+		} 
+
+			
 	}
 
 }
