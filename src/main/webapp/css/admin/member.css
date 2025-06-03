@@ -6,7 +6,6 @@
 .content-area {
     margin-top: 100px;
     margin-left: 300px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -17,7 +16,8 @@
     flex-wrap: wrap;
     flex-direction: column;
     gap: 20px;
-    width: 80%
+    width: 80%;
+    margin: 0 auto;
 }
 
 .search-box {
@@ -93,7 +93,7 @@
 }
 
 .table-button {
-		width: 100%;
+	width: 100%;
     max-width: 120px;
     border: 0;
     background-color:hsl(354, 81%, 63%);

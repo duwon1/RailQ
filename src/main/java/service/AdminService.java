@@ -2,11 +2,16 @@ package service;
 
 import java.util.List;
 
+import dao.MemberDao;
 import dto.MemberDto;
 
-public interface AdminService {
+public class AdminService {
 
-	List<MemberDto> getMember();
+	MemberDao mDao = new MemberDao();
 	
+	public List<MemberDto> getMember() {
+		
+		return mDao.getMember();
+	}
 
 }
