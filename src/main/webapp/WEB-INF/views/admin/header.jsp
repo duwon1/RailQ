@@ -18,32 +18,32 @@
         </div>
         <div class="line"></div>
         <div class="header-main-container">
-            <div class="content-button" data-url="/admin/member">
-                <button type="button" class="button-selection">
+            <div class="content-button">
+                <button type="button" data-num="1" onclick="header_click(1)">
                     <span class="content-circle selected"></span>
                     <span class="content-title">회원 관리</span>
                 </button>
             </div>
-            <div class="content-button" data-url="/admin/board">
-                <button type="button">
+            <div class="content-button">
+                <button type="button" data-num="2" onclick="header_click(2)">
                     <span class="content-circle"></span>
-                    <span class="content-title">게시물 관리</span>
+                    <span class="content-title">실시간 상담</span>
                 </button>
             </div>
             <div class="content-button">
-                <button type="button">
+                <button type="button" data-num="3" onclick="header_click(3)">
                     <span class="content-circle"></span>
                     <span class="content-title">댓글 관리</span>
                 </button>
             </div>
             <div class="content-button">
-                <button type="button">
+                <button type="button" data-num="4" onclick="header_click(4)">
                     <span class="content-circle"></span>
                     <span class="content-title">티켓 관리</span>
                 </button>
             </div>
              <div class="content-button">
-                <button type="button">
+                <button type="button" data-num="5" onclick="header_click(5)">
                     <span class="content-circle"></span>
                     <span class="content-title">공지사항 관리</span>
                 </button>
@@ -57,6 +57,5 @@
         </div>
     </div>
     
-    <div id="main-wrapper"></div>
 </body>
 </html>

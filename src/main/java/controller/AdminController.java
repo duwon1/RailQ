@@ -43,6 +43,9 @@ public class AdminController extends HttpServlet {
         } else if (command.equals("/admin/board")) {
             request.getRequestDispatcher("/WEB-INF/views/admin/board.jsp").forward(request, response);
 
+        } else if (command.equals("/admin/chat")) {
+            request.getRequestDispatcher("/WEB-INF/views/admin/chat.jsp").forward(request, response);
+
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "요청 경로를 찾을 수 없습니다.");
         }
