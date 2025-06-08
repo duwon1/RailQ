@@ -2,16 +2,14 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dto.CityDto;
-import dto.RailDto;
 import dto.RegionDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

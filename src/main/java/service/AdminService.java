@@ -7,7 +7,7 @@ import dto.MemberDto;
 
 public class AdminService {
 
-	MemberDao mDao = new MemberDao();
+	private MemberDao mDao = new MemberDao();
 	
 	public List<MemberDto> getMember() {
 		
