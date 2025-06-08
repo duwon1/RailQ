@@ -12,4 +12,5 @@ public class MemberService {
 		return dao.getLogin("1");
 	}
 
+
 }

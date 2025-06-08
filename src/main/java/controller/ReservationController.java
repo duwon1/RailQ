@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,6 +22,7 @@ import service.ReservationService;
 
 @WebServlet("/reservation/*")
 public class ReservationController extends HttpServlet {
+
     private static final long serialVersionUID = 1L;
 
     protected void doPost(HttpServletRequest request, 

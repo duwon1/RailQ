@@ -1,0 +1,172 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chat-container {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 700px;
+    right: 20px;
+    bottom: 10px;
+    border-radius: 10px;
+    background-color: #e6eef6;
+    border: 1px solid #bbb;
+    overflow: hidden;
+}
+
+.chat-header {
+    position: relative;
+    background-color: #0054a6;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.chat_top {
+    position: relative;
+    width: 100%;
+}
+
+.close {
+    position: absolute;
+    background-image: url("https://info.korail.com/KorailiChat/img/close_icon.svg");
+    width: 18px;
+    height: 18px;
+    right: 0;
+    top: 0;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.chat-header h2 {
+    font-size: 1.2rem;
+}
+
+.chat-main-box {
+    width: 100%;
+    padding: 30px 20px 20px 20px;
+    overflow: auto;
+}
+
+.box-txt {
+    position: relative;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.text-hi {
+    display: flex;
+    margin-left: 80px;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box-img {
+    position: absolute;
+    background-image: url("https://info.korail.com/KorailiChat/img/chatbot_top_icon.png");
+    background-size: contain;
+    vertical-align: top;
+    width: 99px;
+    height: 108px;
+    bottom: 0;
+    left: 0;
+}
+
+.chat-main {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.chat-txt {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+}
+
+.main-txt {
+    background-color:#0054a6;
+    color: white;
+    padding: 5px 10px;
+}
+
+.clock-txt {
+    color: #8f8f8f;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-left: 10px;
+}
+
+.user {
+    align-items: end;
+}
+
+.user .main-txt {
+    border-radius: 20px 20px 0 20px;
+}
+
+.admin-img {
+    position: absolute;
+    display: block;
+    left: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url("https://info.korail.com/KorailiChat/img/talk_icon.png");
+    background-color: #97c2ea;
+    background-repeat: no-repeat;
+    background-size: 45px 54px;
+}
+
+.admin {
+    align-items: start;
+    margin-left: 50px;
+}
+
+.admin .main-txt {
+    border-radius: 0 20px 20px 20px;
+    margin-left: 10px;
+    background-color: white;
+    color: black;
+}
+
+.chat-box {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    bottom: 0;
+    padding: 10px 20px;
+    background-color: white;
+    border-top: 1px solid #bbb;
+}
+
+.chat-box input {
+    width: 90%;
+    border: 0;
+    font-size: 1.1rem;
+}
+
+.submit-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 0;
+    background-color:#0054a6;
+    line-height: 0;
+    cursor: pointer;
+}
+
+.submit-img {
+    display: block;
+    margin: 0 auto;
+    width: 21px;
+    height: 19px;
+    background-image: url("https://info.korail.com/KorailiChat/img/send_icon.svg");
+}

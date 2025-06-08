@@ -6,7 +6,6 @@
 .content-area {
     margin-top: 100px;
     margin-left: 300px;
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -17,7 +16,8 @@
     flex-wrap: wrap;
     flex-direction: column;
     gap: 20px;
-    width: 80%
+    width: 80%;
+    margin: 0 auto;
 }
 
 .search-box {
@@ -46,7 +46,8 @@
 }
 
 .main-table th,.main-table td {
-    width: 100%;
+	display: flex;
+	align-items: center;
     padding: 10px 20px;
     text-align: left;
     vertical-align: middle;
@@ -124,5 +125,4 @@
 		width: 1400px
 	}
 }
-
 
