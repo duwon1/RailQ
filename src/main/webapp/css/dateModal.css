@@ -1,0 +1,293 @@
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+}
+.date-wrap-z-index {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.date-wrap-now {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: white;
+}
+
+.date-tit_wrap {
+    position: relative;
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 20px 30px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 25%;
+    right: 0;
+    width: 23px;
+    height: 23px;
+    background-image: url("https://www.korail.com/src/assets/common/img/ico_pop-close-black.png");
+    background-size: cover;
+    border: 0;
+    cursor: pointer;
+}
+
+.date-line {
+    border-bottom: 1px solid #bbb;
+}
+
+.date-con_Wrap {
+    position: relative;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+}
+
+.date-active {
+    border: 1px solid #ddd;
+    padding: 20px 0;
+}
+
+.info_day {
+    font-size: 1.1111rem;
+    line-height: 1;
+    color: #0054a6;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.info_time {
+    color: #333;
+    margin-top: .4444em;
+    line-height: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.date-date {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.date-date-btn {
+    width: 10px;
+    height: 17px;
+    background-repeat: no-repeat;
+    position: absolute;
+    border: 0;
+}
+
+.left-btn {
+    background-image: url("https://www.korail.com/src/assets/common/img/common/ico_pop-datepk-prev.png");
+    top: 10px;
+    left: calc((100% - 170px) / 2);
+    cursor: pointer;
+}
+
+.rigth-btn {
+    background-image: url("https://www.korail.com/src/assets/common/img/common/ico_pop-datepk-next.png");
+    top: 10px;
+    right: calc((100% - 170px) / 2);
+    cursor: pointer;
+}
+
+.tableWrap table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.tableWrap th, .tableWrap td {
+    padding: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-right: 1px solid #bbb;
+}
+
+.tableWrap th:first-child, .tableWrap td:first-child {
+    color: red;
+    border-left: 1px solid #bbb;
+}
+
+.tableWrap th {
+    border-top: 1px solid black;
+    border-bottom: 1px solid #bbb;
+    background-color: #ddd;
+}
+
+.tableWrap td {
+    border-bottom: 1px solid #bbb;
+    cursor: pointer;
+}
+
+.tableWrap td:hover {
+    background-color: #e5f2ff;
+}
+
+
+/* 시간선택 */
+.time-select  {
+	position: relative;
+	padding: 20px 0;
+	border-bottom: 1px solid #bbb;
+}
+
+.time-select h2 {
+	font-size: 1.3rem;
+	text-align: left;
+}
+
+.slick-list {
+	position: relative;
+	flex-wrap: nowrap;
+	margin: 10px 0;
+	height: 50px;
+	overflow: hidden;
+}
+
+.slick-list-box {
+	position: absolute;
+	display: flex;
+	width: 3200px;
+	top: 0;
+	left: 0;
+	transition: transform 0.3s ease;
+}
+
+.slick-rack {
+	width: 640px;
+	display: flex;
+	gap: 10px;
+	padding: 0 40px;
+}
+
+.slick-item {
+	border: 1px solid #bbb;
+	width: 20%;
+	border-radius: 30px;
+	overflow: hidden;
+}
+
+.slick-item button {
+	display: block;
+	width: 100%;
+	padding: 10px 0;
+	text-align: center;
+	font-size: 1.2rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.slick-item button:hover {
+	background-color: #e5f2ff;
+}
+
+.slick-item button.selected {
+	background-color: #0054a6 !important;
+    color: white !important;
+}
+
+.slick-list-left-btn {
+	position: absolute;
+	width: 10px;
+	height: 17px;
+	top: 17px;
+	left: 0;
+	background-image: url("https://www.korail.com/src/assets/common/img/common/ico_slide-prev.png");
+	cursor: pointer;
+	z-index: 1
+}
+
+.slick-list-right-btn {
+	position: absolute;
+	width: 10px;
+	height: 17px;
+	top: 17px;
+	right: 0;
+	background-image: url("https://www.korail.com/src/assets/common/img/common/ico_slide-next.png");
+	cursor: pointer;
+	z-index: 1;
+}
+
+/* 확인 취소 */
+.date-sub-btn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+.date-sub-btn button {
+	font-size: 1.15rem;
+	font-weight: 500;
+	padding: 6px 20px;
+	border-radius: 30px;
+	cursor: pointer;
+}
+
+.date-sub-btn button:hover {
+	background-color: #e5f2ff;
+}
+
+.date-sub-btn .submit {
+	border: 1px solid #0054a6;
+	color: #0054a6;
+}
+
+.date-sub-btn .close {
+	border: 1px solid #bbb;
+	
+}
+
+td.selected {
+    background-color: #0054a6 !important;
+    color: white !important;
+}
+
+td.disabled {
+    pointer-events: none; /* 클릭 막기 */
+    cursor: default;
+    color: rgba(0, 0, 0, 0.4) !important; /* 글자만 30% 투명 */
+}
+
+td.holiday {
+	color: red;
+}
+
+.disabled {
+    pointer-events: none; /* 클릭 막기 */
+    cursor: not-allowed; /* 불가능한 커서로 변경 */
+    color: rgba(0, 0, 0, 0.4) !important; /* 글자 색을 30% 투명하게 변경 */
+    background-color: #f0f0f0 !important; /* 배경색을 회색으로 설정 */
+}
+
+
+
+
+
+
+
+
+
+
+

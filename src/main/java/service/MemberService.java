@@ -1,9 +1,15 @@
 package service;
 
+import dao.MemberDao;
 import dto.MemberDto;
 
-public interface MemberService {
+public class MemberService {
+	
+	private MemberDao dao = new MemberDao();
 
-	MemberDto getLogin();
+	
+	public MemberDto getLogin() {
+		return dao.getLogin("1");
+	}
 
 }

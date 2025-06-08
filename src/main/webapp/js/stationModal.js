@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	
 	            // 현재 열린 모달의 id값 확인 (1 또는 2)
 	            const modal = document.querySelector(".station-modal-zindex");
-	            const modalId = modal.id; // "1" 또는 "2"일 것으로 기대
+	            const modalId = modal.id; // "1" 또는 "2"
 	
 	            // 역명을 업데이트할 대상 요소 결정
 	            let targetElement = null;
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	            // 텍스트 업데이트
 	            if (targetElement) {
 	                targetElement.innerText = nodename;
-					targetElement.name = nodeid;
+					targetElement.dataset.station = nodeid;
 	            }
 	            // 모달 닫기
 	            stationModalClose();
@@ -116,3 +116,31 @@ function stationModalClose() {
     modal.style.display = "none";
 	modal.removeAttribute("id");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -20,40 +20,6 @@ CREATE TABLE member (
     mcheck      INT DEFAULT 1 NOT NULL
 );
 
--- 도시정보
-CREATE TABLE city (
-    id			INT PRIMARY KEY,
-    name		varchar2(200) NOT NULL
-);
-
--- 정거장정보
-CREATE TABLE region (
-    id			INT PRIMARY KEY,
-    name		varchar2(200) NOT NULL
-);
-
--- 기차종류
-CREATE TABLE train (
-    id			INT PRIMARY KEY,
-    name		VARCHAR2(200) NOT NULL
-);
-
--- 기차시간표정보
-CREATE TABLE train_information (
-    num             INT PRIMARY KEY,
-    tid             INT NOT NULL,
-    dep_regionid    INT NOT NULL,
-    arr_regionid    INT NOT NULL,
-    dep_time        DATE NOT NULL,
-    arr_time        DATE NOT NULL,
-
-    CONSTRAINT fk_train_info_train
-        FOREIGN KEY (tid) REFERENCES train(id),
-    CONSTRAINT fk_dep_region
-        FOREIGN KEY (dep_regionid) REFERENCES region(id),
-    CONSTRAINT fk_arr_region
-        FOREIGN KEY (arr_regionid) REFERENCES region(id)
-);
 
 -- 예약정보
 CREATE TABLE reservation (
@@ -68,6 +34,15 @@ CREATE TABLE reservation (
     CONSTRAINT fk_reservation_train_info
         FOREIGN KEY (tnum) REFERENCES train_information(num)
 );
+
+-- 트리거
+CREATE OR REPLACE TRIGGER trg_member_seq
+    BEFORE INSERT ON member
+    FOR EACH ROW
+BEGIN
+    :NEW.member_seq := member_seq.NEXTVAL;
+END;
+/
 
 
 -- 뷰

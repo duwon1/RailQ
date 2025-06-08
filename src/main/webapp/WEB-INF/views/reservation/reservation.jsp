@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
@@ -15,22 +15,22 @@
 		<div class="container">
         <div class="date-wrap">
             <a href="#" class="btn-arrow btn-bf cursor"></a>
-            <a href="#" class="day-type"><span class="btn-date">0000-00-00(화) 00:00</span></a>
+            <a href="#" class="day-type" onclick="date_modal_open()"><span class="btn-date"></span></a>
             <a href="#" class="btn-arrow btn-nt cursor"></a>
         </div>
         <div class="selectArea-wrap">
         	<div class="left-wrap">
                 <div class="btn-pop cursor">
-                    <h3 class="start"><a href="#none" id="start-station" onclick="stationModalOpen('1')">${start}</a></h3>
+                    <h3 class="start"><a href="#none" id="start-station" data-station="${rMap.start_id}" onclick="stationModalOpen('1')">${rMap.start_name}</a></h3>
                 </div>
                 <div class="btn-box">
                     <button type="button" class="btn-change cursor" ></button>
                 </div>
                 <div class="btn-pop cursor">
-                    <h3 class="last"><a href="#none" id="last-station" onclick="stationModalOpen('2')">${last}</a></h3>
+                    <h3 class="last"><a href="#none" id="last-station" data-station="${rMap.last_id}" onclick="stationModalOpen('2')">${rMap.last_name}</a></h3>
                 </div>
                 <div class="btn-recom cursor" id="person-pop">
-                   <h3><a href="#none" onclick="personModalOpen()">총1명</a></h3>
+                   <h3><a href="#none" onclick="personModalOpen()" id="total_person">총${pMap.total}명</a></h3>
                 </div>
             </div>
             <div class="right-wrap">
@@ -104,7 +104,8 @@
     <!-- 더보기 및 다음날 조회하기 -->
     <div class="bottom-container">
         <div class="more cursor">
-            <h3 class="page_group">더보기</h3>
+            <h3 class="page_group" onclick="nextPage()">더보기</h3>
+            <input type="hidden" id="pageNum" value="1">
         </div>
         <div class="more tomorrow cursor">
             <h3 class="page_group">다음날 (25년05월15일) 조회</h3>
@@ -136,5 +137,6 @@
     </div>
     <c:import url="modal/stationModal.jsp" />
     <c:import url="modal/personModal.jsp" />
+    <c:import url="modal/dateModal.jsp" />
 </body>
 </html>

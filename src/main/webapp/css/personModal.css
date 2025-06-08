@@ -82,6 +82,7 @@ body {
     width: 90%;
     margin: 0 auto;
     padding: 20px 0 20px 0;
+    border-bottom: 1px solid #bbb;
 }
 
 /* 지역선택, 역선택 부분 */
@@ -139,10 +140,15 @@ body {
     background-image: url("https://www.korail.com/src/assets/common/img/common/plus_num_after.png");
 }
 
-/* 마우스 올릴떄 */
-.cursor:hover {
-    background-color: #e5f2ff;
-    cursor: pointer;
-    border: 1px solid gray;
+.psn {
+	margin-bottom: 20px;
 }
+
+button.submit.disable {
+    background-color: #d0d0d0 !important;
+    color: #999 !important;
+    border: 1px solid #ccc !important;
+    pointer-events: none; /* 클릭 및 상호작용 비활성화 */
+}
+
 
