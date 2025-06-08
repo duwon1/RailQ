@@ -13,10 +13,6 @@ ul, li {
     list-style-type: none;
 }
 
-div {
-    /* border: 1px solid black; */
-}
-
 button {
 	background-color:transparent;
 }
@@ -308,7 +304,7 @@ button {
 .train_ktx_ticket {
     width: 60px;
     height: 22px;
-    background-image: url("https://www.korail.com/src/assets/common/img/train_ktx_ticket.png");
+    background-image: url("../img/ktx_train.png");
     background-repeat: no-repeat;
 }
 
@@ -455,7 +451,6 @@ button {
 .cursor:hover {
     background-color: #e5f2ff;
     cursor: pointer;
-    border: 1px solid gray;
 }
 
 @media (max-width: 1100px) {

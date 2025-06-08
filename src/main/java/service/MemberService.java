@@ -11,16 +11,6 @@ public class MemberService {
 	public MemberDto getLogin() {
 		return dao.getLogin("1");
 	}
-	
-	public int sessionMember() {
-		
-		return 1;
-	}
 
-
-	public void memberMessage(int memberNum, String msg) {
-		
-		
-	}
 
 }

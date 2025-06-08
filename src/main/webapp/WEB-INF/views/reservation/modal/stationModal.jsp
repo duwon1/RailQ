@@ -1,5 +1,4 @@
 <%@page import="java.util.List"%>
-<%@page import="dto.CityDto"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
@@ -21,8 +20,7 @@
             </div>
             <div class="tab-content">
                 <ul class="tab-bar">
-                    <li class="tab-btn s"><button type="button">주요역</button></li>
-                    <li class="tab-btn"><button type="button">지역별</button></li>
+                    <li class="tab-btn s"><button type="button">지역별</button></li>
                 </ul>
 
                 <p class="sm-tit">01.지역선택</p>
