@@ -17,7 +17,7 @@ function header_click(num) {
     } else if (num === 2) {
         window.location.href = `/admin/chat?header=${num}`;
     } else if (num === 3) {
-        window.location.href = `/cart.jsp?header=${num}`;
+        window.location.href = `/admin/board?header=${num}`;
     } else if (num === 4) {
         window.location.href = `/mypage.jsp?header=${num}`;
     } else {

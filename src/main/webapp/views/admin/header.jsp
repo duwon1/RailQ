@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../../../css/admin/header.css">
-    <script src="../../../js/admin/header.js"></script>
+    <link rel="stylesheet" href="/css/admin/header.css">
+    <script src="/js/admin/header.js"></script>
 </head>
 <body>
     <div class="header-container">
@@ -33,7 +33,7 @@
             <div class="content-button">
                 <button type="button" data-num="3" onclick="header_click(3)">
                     <span class="content-circle"></span>
-                    <span class="content-title">댓글 관리</span>
+                    <span class="content-title">공지사항</span>
                 </button>
             </div>
             <div class="content-button">

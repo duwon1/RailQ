@@ -15,11 +15,11 @@ import dto.RailDto;
 import dto.ReservationDto;
 
 public class ApiRailInformation {
-    public static List<RailDto> getApiRailInformation(String pageNum, String startStation, String lastStation, String day) throws Exception {
+    public static List<RailDto> getApiRailInformation(String startStation, String lastStation, String day) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo");
         urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + ReservationDto.SERVICEKEY);
-        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode(pageNum, "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("10", "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows", "UTF-8") + "=" + URLEncoder.encode("999", "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("_type", "UTF-8") + "=" + URLEncoder.encode("json", "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("depPlaceId", "UTF-8") + "=" + URLEncoder.encode(startStation, "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("arrPlaceId", "UTF-8") + "=" + URLEncoder.encode(lastStation, "UTF-8"));

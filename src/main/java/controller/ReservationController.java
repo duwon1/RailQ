@@ -2,6 +2,7 @@ package controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dto.CityDto;
+import dto.RailDto;
 import dto.RegionDto;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -48,20 +50,27 @@ public class ReservationController extends HttpServlet {
             pMap.put("total", "1");
 
             Map<String, Object> rMap = new HashMap<>();
-            rMap.put("start_id", "NAT020040");
-            rMap.put("start_name", "상봉");
-            rMap.put("last_id", "NAT010032");
-            rMap.put("last_name", "용산");
+            rMap.put("start_id", "NAT010000");
+            rMap.put("start_name", "대전");
+            rMap.put("last_id", "NAT011668");
+            rMap.put("last_name", "서울");
 
             List<CityDto> cList = service.getCityInformation();
+            List<RailDto> rList = new ArrayList<>();
+            try {
+            	rList = service.getRailArray("NAT010000","NAT011668", "20250609");
+            	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 
             request.setAttribute("cityList", cList);
             request.setAttribute("pMap", pMap);
             request.setAttribute("rMap", rMap);
-            request.setAttribute("date", "2025-06-13");
+            request.setAttribute("date", "2025-06-09");
             request.setAttribute("time", "22");
-
-            request.getRequestDispatcher("/WEB-INF/views/reservation/reservation.jsp").forward(request, response);
+            request.setAttribute("rList", rList);
+            request.getRequestDispatcher("/views/reservation/reservation.jsp").forward(request, response);
 
         } else if (command.equals("/reservation/getrail")) {
             BufferedReader reader = request.getReader();
@@ -80,7 +89,7 @@ public class ReservationController extends HttpServlet {
             String time = json.getString("time");
             String pageNum = json.getString("pageNum");
             try {
-            	JSONArray jsonArray = service.getRail(startStation,lastStation, day, pageNum);
+            	JSONArray jsonArray = service.getRail(startStation,lastStation, day);
             	response.setContentType("application/json");
             	response.setCharacterEncoding("UTF-8");
             	response.getWriter().write(jsonArray.toString());
@@ -107,10 +116,10 @@ public class ReservationController extends HttpServlet {
             response.getWriter().write(jsonArray.toString());
 
         } else if (command.equals("/reservation/detail")) {
-            request.getRequestDispatcher("/WEB-INF/views/reservation/reservation_detail.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/reservation/reservation_detail.jsp").forward(request, response);
 
         } else if (command.equals("/reservation/payment")) {
-            request.getRequestDispatcher("/WEB-INF/views/reservation/reservation_payment.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/reservation/reservation_payment.jsp").forward(request, response);
 
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "요청 경로를 찾을 수 없습니다.");

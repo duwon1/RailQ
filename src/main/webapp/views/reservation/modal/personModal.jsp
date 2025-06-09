@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" href="../../../../css/personModal.css">
-<script src="../../../../js/personModal.js"></script>
+<link rel="stylesheet" href="/css/personModal.css">
+<script src="/js/personModal.js"></script>
 <div class="person-modal-zindex">
     <div class="person-modal-conainer">
        <div class="tit_wrap">

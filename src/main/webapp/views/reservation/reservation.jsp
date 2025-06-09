@@ -1,12 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>RailQ</title>
-<link rel="stylesheet" href="../../../css/reservation.css">
-<script src="../../../js/reservation.js"></script>
+<link rel="stylesheet" href="/css/reservation.css">
+<script src="/js/reservation.js"></script>
 </head>
 <body>
     <div class="top-container">
@@ -74,31 +75,29 @@
                 <label for="c">SR연계 포함</label>
             </div>
         </div>
-       	<div class="rail-inner">
-       	    <div class="li-color"></div>
-            <div class="info-inner">
-                <div class="flag-wrap">
-                   <span class="train_ktx_ticket"></span>
-                   <p class="num">600</p>
-                </div>
-                <div class="date-box">
-                   <h2>서울→부산(21:28 ~ 00:04)</h2>
-                   <span class="s-txt">소요시간2시간36분</span>
-                </div>
-            </div>
-            <div class="price-inner">
-                <div class="price-box cursor">
-                    <p>일반실<p>
-                    <h3>50,000</h3>
-                    <p class="txt-gr">5%적립</p>
-                </div>
-                <div class="price-box cursor">
-                    <p>특실<p>
-                    <h3>50,000</h3>
-                    <p class="txt-gr">5%적립</p>
-                </div>
-           </div>
-       	</div>
+        <c:forEach var="r" items="${rList}">
+        <form action="POST" ></form>
+	       	<div class="rail-inner">
+	       	    <div class="li-color"></div>
+	            <div class="info-inner">
+	                <div class="flag-wrap">
+	                   <span class="train_ktx_ticket"></span>
+	                   <p class="num">${r.trainId}</p>
+	                </div>
+	                <div class="date-box">
+	                   <h2>${r.start_station}→${r.last_station}(${r.start_time} ~ ${r.last_time})</h2>
+	                   <span class="s-txt">소요시간${r.duration}</span>
+	                </div>
+	            </div>
+	            <div class="price-inner">
+	                <div class="price-box cursor">
+	                    <p>일반실<p>
+	                    <h3><fmt:formatNumber value="${r.price}" type="number" groupingUsed="true" /></h3>
+	                    <p class="txt-gr">5%적립</p>
+	                </div>
+	           </div>
+	       	</div>
+       	</c:forEach>
     </div>
 
     <!-- 더보기 및 다음날 조회하기 -->
@@ -122,16 +121,12 @@
                     <span>특실</span>
                     <span>자유석2량></span>
                 </div>
-                <!-- <div class="reserv_first">
-                    <span>특실</span>
-                    <span>자유석2량></span>
-                </div> -->
             </div>
             <div class="reserv_center">
                 <span class="reserv-center-item">열차시각</span>
                 <span class="reserv-center-item">운임요금</span>
                 <span class="reserv-center-item">좌석선택</span>
-                <span class="reserv-center-item buy-item">예매</span>
+                <span class="reserv-center-item buy-item" onclick="">예매</span>
             </div>
         </div>
     </div>
