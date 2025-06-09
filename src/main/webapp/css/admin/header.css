@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .line {
@@ -11,7 +12,7 @@
     position: fixed;
     display: inline-block;
     top: 0;
-    width: 280px;
+    width: 300px;
     height: 100%;
     background-color: rgb(48, 48, 48);
     padding: 0 10px;

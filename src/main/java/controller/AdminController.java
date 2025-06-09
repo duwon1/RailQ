@@ -51,8 +51,9 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("/views/admin/member.jsp").forward(request, response);
 
         } else if (command.equals("/admin/board")) {
+        	List<BoardDto> boardList = service.getBoardList();  // 게시글 리스트 불러오기
+            request.setAttribute("boardList", boardList);       // JSP로 전달
             request.getRequestDispatcher("/views/admin/board.jsp").forward(request, response);
-
         } else if (command.equals("/admin/boardForm")) {
             request.getRequestDispatcher("/views/admin/boardForm.jsp").forward(request, response);
 
@@ -61,31 +62,47 @@ public class AdminController extends HttpServlet {
 
         } else if (command.equals("/admin/setboard")) {
         	String title = request.getParameter("title");
-            String content = request.getParameter("content");
+        	String content = request.getParameter("content");
 
-            Part filePart = request.getPart("file");
-            String realFile = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
-            String ext = realFile.substring(realFile.lastIndexOf("."));
-            String serverFile = System.currentTimeMillis() + ext;
+        	String realFile = null;
+        	String serverFile = null;
 
-            String uploadPath = getServletContext().getRealPath("/upload");
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) uploadDir.mkdirs();
+        	Part filePart = request.getPart("file");
 
-            filePart.write(uploadPath + File.separator + serverFile);
+        	// 파일이 있을 경우에만 처리
+        	if (filePart != null && filePart.getSubmittedFileName() != null && !filePart.getSubmittedFileName().isBlank()) {
+        	    realFile = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+        	    String ext = realFile.substring(realFile.lastIndexOf("."));
+        	    serverFile = System.currentTimeMillis() + ext;
 
-            BoardDto dto = new BoardDto();
-            dto.setTitle(title);
-            dto.setContent(content);
-            dto.setRealFile(realFile);
-            dto.setServerFile(serverFile);
-            dto.setCreateAt(new Date());
-            dto.setViewCount(0);
-            service.registerBoard(dto);
+        	    String uploadPath = getServletContext().getRealPath("/upload");
+        	    File uploadDir = new File(uploadPath);
+        	    if (!uploadDir.exists()) uploadDir.mkdirs();
 
-            response.sendRedirect("/admin/board"); // 게시판 목록 페이지로 이동
+        	    filePart.write(uploadPath + File.separator + serverFile);
+        	}
+
+        	BoardDto dto = new BoardDto();
+        	dto.setTitle(title);
+        	dto.setContent(content);
+        	dto.setRealFile(realFile);     // null이 될 수도 있음
+        	dto.setServerFile(serverFile); // null이 될 수도 있음
+        	dto.setCreateAt(new Date());
+        	dto.setViewCount(0);
+
+        	service.registerBoard(dto);
+
+        	response.sendRedirect("/admin/board?header=3");
+
 
         	
+        } else if (command.equals("/admin/deleteBoard")) {
+            int num = Integer.parseInt(request.getParameter("num"));
+
+            // 파일도 같이 삭제하고 싶으면 파일명 조회 후 실제 파일 삭제 추가
+            service.deleteBoard(num);
+
+            response.sendRedirect("/admin/board?header=3");
         } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "요청 경로를 찾을 수 없습니다.");
         }
