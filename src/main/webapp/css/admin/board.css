@@ -66,22 +66,19 @@
 }
 
 .main-table th:nth-child(1),.main-table td:nth-child(1) {
-		width: 15%;
+		width: 10%;
 }
 .main-table th:nth-child(2),.main-table td:nth-child(2) {
-		width: 15%;
+		width: 30%;
 }
 .main-table th:nth-child(3),.main-table td:nth-child(3) {
-		width: 15%;
+		width: 20%;
 }
 .main-table th:nth-child(4),.main-table td:nth-child(4) {
-		width: 30%;
+		width: 10%;
 }
 .main-table th:nth-child(5),.main-table td:nth-child(5) {
-		width: 30%;
-}
-.main-table th:nth-child(6),.main-table td:nth-child(6) {
-		width: 30%;
+		width: 20%;
 }
 
 .button-td {
@@ -112,6 +109,13 @@
 
 .delete-color {
     color: red;
+}
+
+.insert-button {
+	width: 100px;
+	height: 30px;
+	cursor: pointer;
+	
 }
 
 @media (max-width: 1400px) {

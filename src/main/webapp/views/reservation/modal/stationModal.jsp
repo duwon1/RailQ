@@ -2,8 +2,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<link rel="stylesheet" href="../../../../css/stationModal.css">
-<script src="../../../../js/stationModal.js"></script>
+<link rel="stylesheet" href="/css/stationModal.css">
+<script src="/js/stationModal.js"></script>
 
 <div class="station-modal-zindex">
     <div class="station-modal-conainer">

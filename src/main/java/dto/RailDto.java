@@ -8,6 +8,15 @@ public class RailDto {
     private String start_time;         // 출발 시간 (예: 20230403051200)
     private String last_time;          // 도착 시간
     private String price;              // 요금 (성인요금)
+    private String duration;		   // 소요시간
+
+    public String getDuration() {
+        return duration;
+    }
+
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
     
 	public int getTrainId() {
 		return trainId;

@@ -32,29 +32,29 @@ public class MemberController extends HttpServlet {
         MemberService service = new MemberService();
 
         if (command.equals("/")) {
-            request.getRequestDispatcher("/WEB-INF/views/main.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/main.jsp").forward(request, response);
 
         } else if (command.equals("/member/loginForm")) {
-            request.getRequestDispatcher("/WEB-INF/views/member/loginForm.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/loginForm.jsp").forward(request, response);
 
         } else if (command.equals("/member/test")) {
             MemberDto mDto = service.getLogin();
             request.setAttribute("member", mDto);
-            request.getRequestDispatcher("/WEB-INF/views/member/test.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/test.jsp").forward(request, response);
 
         } else if (command.equals("/member/login")) {
-            request.getRequestDispatcher("/WEB-INF/views/member/login.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/login.jsp").forward(request, response);
 
         } else if (command.equals("/member/join")) {
-            request.getRequestDispatcher("/WEB-INF/views/member/join.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/join.jsp").forward(request, response);
 
         } else if (command.equals("/member/terms")) {
-            request.getRequestDispatcher("/WEB-INF/views/member/terms.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/terms.jsp").forward(request, response);
 
         } else if (command.equals("/member/chat")) {
-            request.getRequestDispatcher("/WEB-INF/views/member/chat.jsp").forward(request, response);
+            request.getRequestDispatcher("/views/member/chat.jsp").forward(request, response);
 
-        }  else {
+        } else {
             response.sendError(HttpServletResponse.SC_NOT_FOUND, "해당 요청 경로가 존재하지 않습니다.");
         }
     }

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<link rel="stylesheet" href="../../../../css/discountModal.css">
-<script src="../../../../js/discountModal.js"></script>
+<link rel="stylesheet" href="/css/discountModal.css">
+<script src="/js/discountModal.js"></script>
 <div class="station-modal-zindex">
     <div class="station-modal-conainer">
         <div class="tit_wrap">
