@@ -1,146 +1,155 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // 주요역 / 지역별 탭 버튼
+    // 탭 버튼
     const tabButtons = document.querySelectorAll(".tab-bar .tab-btn");
-
-    tabButtons.forEach(function (tab) {
+    tabButtons.forEach(tab => {
         tab.addEventListener("click", function () {
-            // 모든 tab-btn에서 클래스 's' 제거
-            tabButtons.forEach(function (el) {
-                el.classList.remove("s");
-            });
-            // 클릭한 li에 클래스 's' 추가
+            tabButtons.forEach(el => el.classList.remove("s"));
             this.classList.add("s");
         });
     });
 
-    // 지역 클릭 시 선택 표시 (ID 토글)
+    // 지역 선택 시 표시
     const contentItems = document.querySelectorAll(".content-a");
-
-    contentItems.forEach(function (item) {
+    contentItems.forEach(item => {
         item.addEventListener("click", function () {
-            // 모든 요소의 ID 제거
             contentItems.forEach(el => el.removeAttribute("id"));
-            // 클릭한 요소에 ID 추가
             this.id = "content-a-id";
         });
     });
 
-    // AJAX로 역명 요청
-    const cityLinks = document.querySelectorAll('a.city-link');
+    // 시/도 클릭 시 AJAX 요청
+	const cityLinks = document.querySelectorAll('a.city-link');
 
-    cityLinks.forEach(link => {
-        link.addEventListener("click", function (e) {
-            e.preventDefault();
+	cityLinks.forEach(link => {
+	    link.addEventListener("click", function (e) {
+	        e.preventDefault();
+	        const citycode = this.dataset.citycode;
 
-            const citycode = this.dataset.citycode;
-            console.log("📦 선택된 citycode:", citycode);
+	        fetch(`/reservation/region?citycode=${encodeURIComponent(citycode)}`)
+	            .then(response => response.json())
+	            .then(data => {
+	                const regionListEl = document.getElementById("region-list");
+	                regionListEl.innerHTML = "";
 
-            fetch(`/reservation/region?citycode=${encodeURIComponent(citycode)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("서버 응답 오류!");
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const regionListEl = document.getElementById("region-list");
-                    regionListEl.innerHTML = ""; // 기존 리스트 초기화
+	                if (data.length === 0) {
+	                    regionListEl.innerHTML = "<li>역 정보 없음</li>";
+	                    return;
+	                }
 
-                    if (data.length === 0) {
-                        regionListEl.innerHTML = "<li>역 정보 없음</li>";
-                        return;
-                    }
+	                data.forEach(region => {
+	                    const li = document.createElement("li");
+	                    li.className = "content-a cursor";
 
-                    // 역 리스트 출력
-                    data.forEach(region => {
-                        const li = document.createElement("li");
-                        li.className = "content-a cursor";
+	                    const a = document.createElement("a");
+	                    a.href = "#";
+	                    a.textContent = region.nodename;
+	                    a.classList.add("region-link");
+	                    a.dataset.nodeid = region.nodeid;
 
-                        const a = document.createElement("a");
-                        a.href = "#";
-                        a.textContent = region.nodename;
-                        a.classList.add("region-link");
-                        a.dataset.nodeid = region.nodeid;
+	                    li.appendChild(a);
+	                    regionListEl.appendChild(li);
+	                });
+	            })
+	            .catch(error => {
+	                console.error("❌ 지역 요청 오류:", error);
+	            });
+	    });
+	});
 
-                        li.appendChild(a);
-                        regionListEl.appendChild(li);
-						
-						// 역 선택 시 모달 닫고 텍스트 적용 (동적 바인딩)
-						bindRegionClickEvents(region.nodeid, region.nodename);
-                    });
+	// ✅ region-link 이벤트는 한 번만 위임 방식으로 바인딩
+	document.getElementById("region-list").addEventListener("click", function (e) {
+	    const link = e.target.closest("a.region-link");
+	    if (!link) return;
 
-                    
-                })
-                .catch(error => {
-                    console.error("❌ 오류 발생:", error);
-                });
-		});
-    });
+	    e.preventDefault();
 
-    // region-link 클릭 시 모달 닫고 텍스트 업데이트
-	function bindRegionClickEvents(nodeid, nodename) {
-	    const regionLinks = document.querySelectorAll('a.region-link');
-		
-	    regionLinks.forEach(link => {
-			link.addEventListener("click", function (e) {
-	            e.preventDefault();
-	
-	            // 현재 열린 모달의 id값 확인 (1 또는 2)
-	            const modal = document.querySelector(".station-modal-zindex");
-	            const modalId = modal.id; // "1" 또는 "2"
-	
-	            // 역명을 업데이트할 대상 요소 결정
-	            let targetElement = null;
-	            if (modalId === "1") {
-	                targetElement = document.getElementById("start-station");
-	            } else if (modalId === "2") {
-	                targetElement = document.getElementById("last-station");
-	            }
-	
-	            // 텍스트 업데이트
-	            if (targetElement) {
-	                targetElement.innerText = nodename;
-					targetElement.dataset.station = nodeid;
-	            }
-	            // 모달 닫기
-	            stationModalClose();
-	        });
+	    const nodeid = link.dataset.nodeid;
+	    const nodename = link.textContent;
+
+	    const modal = document.querySelector(".station-modal-zindex");
+	    const modalId = modal.id;
+
+	    const target = modalId === "1"
+	        ? document.getElementById("start-station")
+	        : document.getElementById("last-station");
+
+	    if (target) {
+	        target.innerText = nodename;
+	        target.dataset.station = nodeid;
+	    }
+
+	    stationModalClose();
+	    updateReservationForm();
+	});
+
+
+    // 역 클릭 시 모달 닫고 텍스트 적용
+	function bindRegionClickEvents() {
+	    document.getElementById("region-list").addEventListener("click", function (e) {
+	        const link = e.target.closest("a.region-link");
+	        if (!link) return;
+
+	        e.preventDefault();
+
+	        const nodeid = link.dataset.nodeid;
+	        const nodename = link.textContent;
+
+	        const modal = document.querySelector(".station-modal-zindex");
+	        const modalId = modal.id;
+
+	        let target = modalId === "1"
+	            ? document.getElementById("start-station")
+	            : document.getElementById("last-station");
+
+	        if (target) {
+	            target.innerText = nodename;
+	            target.dataset.station = nodeid;
+	        }
+
+	        stationModalClose();
+	        updateReservationForm();
 	    });
 	}
-		
+
+
+    // 예약 정보 hidden input 자동 반영
+	function updateReservationForm() {
+	    const startStationEl = document.getElementById("start-station");
+	    const lastStationEl = document.getElementById("last-station");
+
+	    const startId = startStationEl.dataset.station;
+	    const startName = startStationEl.innerText;
+
+	    const lastId = lastStationEl.dataset.station;
+	    const lastName = lastStationEl.innerText;
+
+	    const date = document.querySelector(".btn-date").dataset.reservationDay; // "20250611"
+	    const time = document.querySelector(".btn-date").dataset.reservationTime; // "22"
+	    const formattedDate = `${date.slice(0, 4)}-${date.slice(4, 6)}-${date.slice(6, 8)}`;
+
+	    document.getElementById("start_id").value = startId;
+	    document.getElementById("last_id").value = lastId;
+	    document.getElementById("reservationDate").value = formattedDate;
+	    document.getElementById("reservationTime").value = time;
+	    document.getElementById("total").value = "1";
+
+	    // 추가 필드 설정
+	    document.getElementById("start_name").value = startName;
+	    document.getElementById("last_name").value = lastName;
+
+	    // ✅ 전송
+	    document.getElementById("searchForm").submit();
+	}
+
+
+
+    // 외부에서 호출 가능하도록 등록
+    window.updateReservationForm = updateReservationForm;
 });
 
-// 모달창 닫기 함수
+// 모달 닫기
 function stationModalClose() {
     const modal = document.querySelector(".station-modal-zindex");
     modal.style.display = "none";
-	modal.removeAttribute("id");
+    modal.removeAttribute("id");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

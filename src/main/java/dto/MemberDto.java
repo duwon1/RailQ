@@ -9,14 +9,10 @@ public class MemberDto {
 	private String pw;
 	private String email;
 	private String name;
-	private String phone;
 	private String gender;
-	private String zipcode;
-	private String address;
-	private String address1;
 	private String create_time;
 	private String last_login;
-	private int mcheck;
+	private String mcheck;
 	
 	 private static final DateTimeFormatter FORMATTER = 
 			 DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 HH시 mm분 ss초");
@@ -51,36 +47,19 @@ public class MemberDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getPhone() {
-		return phone;
-	}
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
-		this.gender = gender;
+		if ("male".equals(gender)) {
+	        this.gender = "m";
+	    } else if ("female".equals(gender)) {
+	        this.gender = "f";
+	    } else {
+	        this.gender = gender; // 혹시 예외 케이스
+	    }
 	}
-	public String getZipcode() {
-		return zipcode;
-	}
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getAddress1() {
-		return address1;
-	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
+
 	public String getCreate_time() {
 		return create_time;
 	}
@@ -104,10 +83,10 @@ public class MemberDto {
 	public void setLast_login(String last_login) {
 		this.last_login = formatIfTimestamp(last_login);
 	}
-	public int getMcheck() {
+	public String getMcheck() {
 		return mcheck;
 	}
-	public void setMcheck(int mcheck) {
+	public void setMcheck(String mcheck) {
 		this.mcheck = mcheck;
 	}
 	

@@ -34,6 +34,7 @@ ul, li {
 
 /* 선택한 티켓 정보 */
 .rail-inner {
+	position: relative;
 	display: flex;
 	overflow: hidden;
     width: 100%;
@@ -123,7 +124,7 @@ ul, li {
 
 /* 안내 및 꼭 알아두세요! */
 .uf_info-wrap {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     border: 1px solid #bbb;
     border-radius: 20px;
@@ -150,4 +151,11 @@ ul, li {
     list-style-type: square;
     list-style-position: inside;
     font-size: 1.1rem;
+}
+
+.info-price {
+	padding: 20px;
+	position: absolute;
+	bottom: 0;
+	right: 0;
 }

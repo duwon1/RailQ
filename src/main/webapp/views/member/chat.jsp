@@ -33,7 +33,7 @@
     </div>
 
     <script>
-        const mnum = 1; // 유저 식별 번호
+        const mnum = ${loginUser.num}; // 유저 식별 번호
         const ws = new WebSocket("ws://localhost:8080/chatSocket/" + mnum);
 
         ws.onmessage = function (e) {
