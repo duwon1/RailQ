@@ -7,7 +7,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const slickRacks = document.querySelectorAll(".slick-rack");
     const leftButton = document.querySelector(".slick-list-left-btn");
     const rightButton = document.querySelector(".slick-list-right-btn");
+    const leftMonthBtn = document.getElementById("left-day");
+    const rightMonthBtn = document.getElementById("right-day");
     const infoTimeEl = document.querySelector(".info_time");
+    const btnDate = document.querySelector(".btn-date");
+
     let currentPosition = 0;
     let currentDate = new Date();
 
@@ -35,19 +39,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const year = baseDate.getFullYear();
         const month = baseDate.getMonth();
         const today = new Date();
-        const twoWeeksLater = new Date();
+        const twoWeeksLater = new Date(today);
         twoWeeksLater.setDate(today.getDate() + 14);
+
         tbody.innerHTML = "";
+        dateDate.textContent = `${year}년 ${month + 1}월`;
+
+        // ✅ 기존 선택 초기화
+        document.querySelectorAll("#calendar-body td.selected").forEach(td => td.classList.remove("selected"));
 
         const firstDay = new Date(year, month, 1).getDay();
         const lastDate = new Date(year, month + 1, 0).getDate();
 
         let date = 1;
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 6; i++) {
             const tr = document.createElement("tr");
             for (let j = 0; j < 7; j++) {
                 const td = document.createElement("td");
-                if (i === 0 && j < firstDay || date > lastDate) {
+                if ((i === 0 && j < firstDay) || date > lastDate) {
                     td.innerHTML = "";
                 } else {
                     const d = new Date(year, month, date);
@@ -57,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     td.setAttribute("data-date", `${formatted}(${dayName})`);
                     td.setAttribute("id", formatted);
 
-                    if (d < new Date(today.setHours(0, 0, 0, 0)) || d > twoWeeksLater) {
+                    if (d < today.setHours(0, 0, 0, 0) || d > twoWeeksLater) {
                         td.classList.add("disabled");
                     } else {
                         td.addEventListener("click", () => handleDateClick(td));
@@ -70,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         holidayAPI(year, month + 1);
-        selectDateAndTime(dateFromServer, timeFromServer);
     }
 
     function handleDateClick(td) {
@@ -88,30 +96,27 @@ document.addEventListener("DOMContentLoaded", function () {
         updateTimeButtons(datePart, null);
     }
 
-	function selectDateAndTime(dateStr, hourStr) {
-	    const td = document.querySelector(`td[id='${dateStr}']`);
-	    if (td) td.classList.add("selected");
+    function selectDateAndTime(dateStr, hourStr) {
+        const td = document.querySelector(`td[id='${dateStr}']`);
+        if (!td || td.classList.contains("disabled")) return;
 
-	    // info_day에 자동 날짜 반영
-	    const dateObj = new Date(dateStr);
-	    const dayName = dayNames[dateObj.getDay()];
-	    infoDay.textContent = `${dateObj.getFullYear()}년 ${String(dateObj.getMonth() + 1).padStart(2, '0')}월 ${String(dateObj.getDate()).padStart(2, '0')}일(${dayName})`;
+        td.classList.add("selected");
 
-	    // 버튼 텍스트 업데이트
-	    const btnDate = document.querySelector(".btn-date");
-	    btnDate.textContent = `${dateStr}(${dayName}) ${hourStr}:00`;
-	    btnDate.dataset.reservationDay = dateStr.replace(/-/g, "");
-	    btnDate.dataset.reservationTime = hourStr;
+        const dateObj = new Date(dateStr);
+        const dayName = dayNames[dateObj.getDay()];
+        infoDay.textContent = `${dateObj.getFullYear()}년 ${String(dateObj.getMonth() + 1).padStart(2, '0')}월 ${String(dateObj.getDate()).padStart(2, '0')}일(${dayName})`;
 
-	    updateTimeButtons(dateStr, parseInt(hourStr));
-	}
+        btnDate.textContent = `${dateStr}(${dayName}) ${hourStr}:00`;
+        btnDate.dataset.reservationDay = dateStr.replace(/-/g, "");
+        btnDate.dataset.reservationTime = hourStr;
 
+        updateTimeButtons(dateStr, parseInt(hourStr));
+    }
 
     function updateTimeButtons(dateStr, selectedHour) {
         const todayStr = new Date().toISOString().split("T")[0];
         const isToday = dateStr === todayStr;
         const nowHour = new Date().getHours();
-        let found = false;
 
         timeButtons.forEach(btn => {
             const hour = parseInt(btn.textContent);
@@ -119,11 +124,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (isToday && hour < nowHour) {
                 btn.classList.add("disabled");
-            } else if (!found && selectedHour === hour) {
+            } else if (selectedHour === hour) {
                 btn.classList.add("selected");
                 infoTimeEl.textContent = `${hour}:00 이후 출발`;
                 scrollToButton(btn);
-                found = true;
             }
         });
     }
@@ -135,7 +139,20 @@ document.addEventListener("DOMContentLoaded", function () {
         slickListBoxes.forEach(box => box.style.transform = `translateX(${currentPosition}px)`);
     }
 
-    // 슬라이드 좌우
+    // 시간 선택
+    timeButtons.forEach(button => {
+        button.addEventListener("click", function () {
+            if (this.classList.contains("disabled")) return;
+            timeButtons.forEach(btn => btn.classList.remove("selected"));
+            this.classList.add("selected");
+
+            const hour = this.textContent.replace("시", "");
+            infoTimeEl.textContent = `${hour}:00 이후 출발`;
+            scrollToButton(this);
+        });
+    });
+
+    // 시간 슬라이드
     leftButton.addEventListener("click", () => {
         currentPosition += 640;
         if (currentPosition > 0) currentPosition = 0;
@@ -149,29 +166,33 @@ document.addEventListener("DOMContentLoaded", function () {
         slickListBoxes.forEach(box => box.style.transform = `translateX(${currentPosition}px)`);
     });
 
-    timeButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            if (this.classList.contains("disabled")) return;
-            timeButtons.forEach(btn => btn.classList.remove("selected"));
-            this.classList.add("selected");
-
-            const hour = this.textContent.replace("시", "");
-            infoTimeEl.textContent = `${hour}:00 이후 출발`;
-            scrollToButton(this);
-        });
+    // ✅ 달 이동 시 자동 재선택 적용
+    leftMonthBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        initializeCalendar(currentDate);
+        selectDateAndTime(dateFromServer, timeFromServer);
     });
 
+    rightMonthBtn.addEventListener("click", () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        initializeCalendar(currentDate);
+        selectDateAndTime(dateFromServer, timeFromServer);
+    });
+
+    // 초기 실행
     initializeCalendar(currentDate);
+    selectDateAndTime(dateFromServer, timeFromServer);
 });
 
+// 모달 열기/닫기
 function date_modal_open() {
     document.querySelector(".date-wrap-z-index").style.display = "block";
 }
-
 function date_modal_close() {
     document.querySelector(".date-wrap-z-index").style.display = "none";
 }
 
+// 날짜/시간 선택 완료
 function date_submit() {
     const selectedTd = document.querySelector("#calendar-body td.selected");
     const selectedTime = document.querySelector(".slick-item .selected");
@@ -189,4 +210,5 @@ function date_submit() {
     btnDate.dataset.reservationTime = hour;
 
     date_modal_close();
+	updateReservationForm();
 }

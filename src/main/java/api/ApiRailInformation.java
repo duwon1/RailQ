@@ -15,7 +15,7 @@ import dto.RailDto;
 import dto.ReservationDto;
 
 public class ApiRailInformation {
-    public static List<RailDto> getApiRailInformation(String startStation, String lastStation, String day) throws Exception {
+    public static List<RailDto> getApiRailInformation(String startStation, String lastStation, String day, String train) throws Exception {
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1613000/TrainInfoService/getStrtpntAlocFndTrainInfo");
         urlBuilder.append("?" + URLEncoder.encode("serviceKey", "UTF-8") + "=" + ReservationDto.SERVICEKEY);
         urlBuilder.append("&" + URLEncoder.encode("pageNo", "UTF-8") + "=" + URLEncoder.encode("1", "UTF-8"));
@@ -24,7 +24,7 @@ public class ApiRailInformation {
         urlBuilder.append("&" + URLEncoder.encode("depPlaceId", "UTF-8") + "=" + URLEncoder.encode(startStation, "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("arrPlaceId", "UTF-8") + "=" + URLEncoder.encode(lastStation, "UTF-8"));
         urlBuilder.append("&" + URLEncoder.encode("depPlandTime", "UTF-8") + "=" + URLEncoder.encode(day, "UTF-8"));
-        urlBuilder.append("&" + URLEncoder.encode("trainGradeCode", "UTF-8") + "=" + URLEncoder.encode("00", "UTF-8"));
+        urlBuilder.append("&" + URLEncoder.encode("trainGradeCode", "UTF-8") + "=" + URLEncoder.encode(train, "UTF-8"));
 
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();

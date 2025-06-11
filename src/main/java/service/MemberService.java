@@ -13,4 +13,21 @@ public class MemberService {
 	}
 
 
+	public MemberDto getMember(String id) {
+		return dao.getKakaoMember(id);
+	}
+
+
+	public void joinKakao(MemberDto mDto) {
+		dao.joinKakao(mDto);
+		
+	}
+
+
+	public void memberDelete(int memberNum) {
+		dao.memberDelete(memberNum);
+		
+	}
+
+
 }

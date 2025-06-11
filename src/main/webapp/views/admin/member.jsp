@@ -33,19 +33,6 @@
 	                    </td>
 	                </tr>
                 </c:forEach>
-                <c:forEach var="m" items="${memberList}">
-	                <tr class="content-table">
-	                    <td>${m.num}</td>
-						<td>${m.name}</td>
-	                    <td>${m.id}</td>
-	                    <td>${m.last_login}</td>
-	                    <td>${m.create_time}</td>
-	                    <td class="button-td">
-	                        <button type="button" class="table-button">삭제</button>
-	                        <button type="button" class="table-button">복구</button>
-	                    </td>
-	                </tr>
-                </c:forEach>
             </tbody>
         </table>
     </div>

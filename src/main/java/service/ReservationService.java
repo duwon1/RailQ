@@ -12,12 +12,15 @@ import org.json.JSONObject;
 import api.ApiCityInformation;
 import api.ApiRailInformation;
 import api.ApiRegionInformation;
+import dao.ReservationDao;
 import dto.CityDto;
 import dto.RailDto;
 import dto.RegionDto;
+import dto.ReservationDto;
 
 public class ReservationService {
-
+	
+	private ReservationDao rDao = new ReservationDao();
 
 	public List<CityDto> getCityInformation() {
 		ApiCityInformation api = new ApiCityInformation();
@@ -43,26 +46,8 @@ public class ReservationService {
 		return cList;
 	}
 
-	public JSONArray getRail(String startStation, String lastStation, String day) throws Exception {
-		List<RailDto> rList = ApiRailInformation.getApiRailInformation(startStation, lastStation, day);
-		JSONArray jsonArray = new JSONArray();
-        for (RailDto dto : rList) {
-            JSONObject obj = new JSONObject();
-            obj.put("trainId", dto.getTrainId());
-            obj.put("trainName", dto.getTrainName());
-            obj.put("start_station", dto.getStart_station());
-            obj.put("last_station", dto.getLast_station());
-            obj.put("start_time", dto.getStart_time());
-            obj.put("last_time", dto.getLast_time());
-            obj.put("price", dto.getPrice());
-            jsonArray.put(obj);
-        }
-        return jsonArray;
-		
-	}
-
-	public List<RailDto> getRailArray(String startStation, String lastStation, String day) throws Exception {
-	    List<RailDto> rList = ApiRailInformation.getApiRailInformation(startStation, lastStation, day);
+	public List<RailDto> getRailArray(String startStation, String lastStation, String day, String train) throws Exception {
+	    List<RailDto> rList = ApiRailInformation.getApiRailInformation(startStation, lastStation, day, train);
 	    // 시간 포맷터 정의
 	    SimpleDateFormat originalFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 	    SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
@@ -92,6 +77,15 @@ public class ReservationService {
 	    }
 	    
 	    return rList;
+	}
+
+	public Boolean insertReservation(ReservationDto dto) {
+		
+		return rDao.insertReservation(dto);
+	}
+
+	public List<ReservationDto> getMemberReservation(int mnum) {
+		return rDao.getMemberReservation(mnum);
 	}
 
 

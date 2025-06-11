@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,33 +76,33 @@
                 <label for="c">SR연계 포함</label>
             </div>
         </div>
-        <c:forEach var="r" items="${rList}">
-        <form action="POST" ></form>
-	       	<div class="rail-inner">
-	       	    <div class="li-color"></div>
-	            <div class="info-inner">
-	                <div class="flag-wrap">
-	                   <span class="train_ktx_ticket"></span>
-	                   <p class="num">${r.trainId}</p>
-	                </div>
-	                <div class="date-box">
-	                   <h2>${r.start_station}→${r.last_station}(${r.start_time} ~ ${r.last_time})</h2>
-	                   <span class="s-txt">소요시간${r.duration}</span>
-	                </div>
-	            </div>
-	            <div class="price-inner">
-	                <div class="price-box cursor">
-	                    <p>일반실<p>
-	                    <h3><fmt:formatNumber value="${r.price}" type="number" groupingUsed="true" /></h3>
-	                    <p class="txt-gr">5%적립</p>
-	                </div>
-	           </div>
-	       	</div>
-       	</c:forEach>
-    </div>
+		<c:forEach var="r" items="${rList}">
+		    <div class="rail-inner">
+		        <div class="li-color"></div>
+		        <div class="info-inner">
+		            <div class="flag-wrap">
+                        <span class="train_ktx_ticket" style="background-image: url('../img/${r.trainName}.png');"></span>
+		                <p class="num">${r.trainId}</p>
+		            </div>
+		            <div class="date-box">
+		                <h2>${r.start_station}→${r.last_station} (${r.start_time} ~ ${r.last_time})</h2>
+		                <span class="s-txt">소요시간 ${r.duration}</span>
+		            </div>
+		        </div>
+		        <div class="price-inner">
+		            <div class="price-box cursor"
+		                 onclick="selectTicket('${r.trainId}', '${r.start_station}', '${r.last_station}', '${r.start_time}', '${r.last_time}', '${date}', '${r.trainName}', '${r.price}')">
+		                <p>일반실</p>
+		                <h3><fmt:formatNumber value="${r.price}" type="number" groupingUsed="true" /></h3>
+		                <p class="txt-gr">5% 적립</p>
+		            </div>
+		        </div>
+		    </div>
+		</c:forEach>
+	</div>
 
     <!-- 더보기 및 다음날 조회하기 -->
-    <div class="bottom-container">
+    <!-- <div class="bottom-container">
         <div class="more cursor">
             <h3 class="page_group" onclick="nextPage()">더보기</h3>
             <input type="hidden" id="pageNum" value="1">
@@ -109,7 +110,7 @@
         <div class="more tomorrow cursor">
             <h3 class="page_group">다음날 (25년05월15일) 조회</h3>
         </div>
-    </div>
+    </div> -->
     
     <div class="bottom-bar-container down">
         <div class="reserv_wrapbtn">
@@ -119,17 +120,37 @@
             <div class="ticket_reserv">
                 <div class="reserv_first">
                     <span>특실</span>
-                    <span>자유석2량></span>
+                    <span id="select-tiket">선택된 열차 정보 없음</span>
                 </div>
             </div>
             <div class="reserv_center">
                 <span class="reserv-center-item">열차시각</span>
                 <span class="reserv-center-item">운임요금</span>
                 <span class="reserv-center-item">좌석선택</span>
-                <span class="reserv-center-item buy-item" onclick="">예매</span>
+                <span class="reserv-center-item buy-item" onclick="submitReservation()">예매</span>
             </div>
         </div>
     </div>
+    <form id="searchForm" method="GET" action="/reservation">
+	    <input type="hidden" name="start_id" id="start_id" value="${rMap.start_id}">
+	    <input type="hidden" name="start_name" id="start_name" value="${rMap.start_name}">
+	    <input type="hidden" name="last_id" id="last_id" value="${rMap.last_id}">
+	    <input type="hidden" name="last_name" id="last_name" value="${rMap.last_name}">
+	    <input type="hidden" name="date" id="reservationDate" value="${date}">
+	    <input type="hidden" name="time" id="reservationTime" value="${time}">
+	    <input type="hidden" name="total" id="total" value="${pMap.total}">
+	</form>
+	<form id="reservationForm" method="GET" action="/reservation/detail">
+	    <input type="hidden" name="trainId" id="form-trainId">
+	    <input type="hidden" name="start_station" id="form-startStation">
+	    <input type="hidden" name="last_station" id="form-lastStation">
+	    <input type="hidden" name="start_time" id="form-startTime">
+	    <input type="hidden" name="last_time" id="form-lastTime">
+	    <input type="hidden" name="date" id="form-date">
+	    <input type="hidden" name="trainName" id="form-trainName">
+	    <input type="hidden" name="price" id="form-price">
+	</form>
+
     <c:import url="modal/stationModal.jsp" />
     <c:import url="modal/personModal.jsp" />
     <c:import url="modal/dateModal.jsp" />

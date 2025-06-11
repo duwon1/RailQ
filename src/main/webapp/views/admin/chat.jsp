@@ -1,27 +1,28 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:import url="header.jsp" />
-<link href="/css/chat.css" rel="stylesheet" />
-<div class="chat-container">
-    <div class="chat-header">
-        <div class="chat_top">
-            <h2>실시간상담 (관리자)</h2>
-            <span class="close"></span>
-        </div>
-    </div>
-    <div class="chat-main-box">
-        <div class="box-txt">
-            <span class="box-img"></span>
-            <div class="text-hi">
-                <h4><p>관리자</p></h4>
-                <p>실시간 상담입니다</p>
-            </div>
-        </div>
-        <div class="chat-main" id="chatArea"></div>
-    </div>
-    <div class="chat-box">
-        <input type="text" id="msgInput" placeholder="답변을 입력해 주세요.">
-        <button type="button" class="submit-btn" onclick="sendMessage()">
+
+<link rel="stylesheet" href="../../css/chat.css">
+   <div class="chat-container">
+       <div class="chat-header">
+           <div class="chat_top">
+               <h2>실시간상담 (관리자)</h2>
+               <span class="close"></span>
+           </div>
+       </div>
+       <div class="chat-main-box">
+           <div class="box-txt">
+               <span class="box-img"></span>
+               <div class="text-hi">
+                   <h4><p>관리자</p></h4>
+                   <p>실시간 상담입니다</p>
+               </div>
+           </div>
+           <div class="chat-main" id="chatArea"></div>
+       </div>
+       <div class="chat-box">
+           <input type="text" id="msgInput" placeholder="답변을 입력해 주세요.">
+           <button type="button" class="submit-btn" onclick="sendMessage()">
             <span class="submit-img"></span>
         </button>
     </div>

@@ -1,6 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="/css/dateModal.css">
-<script src="js/dateModal.js"></script>
+<script src="/js/dateModal.js"></script>
 <div class="date-wrap-z-index">
     <div class="date-wrap-now">
         <div class="date-tit_wrap">

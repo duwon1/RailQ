@@ -12,9 +12,6 @@ CREATE TABLE member (
     email       VARCHAR2(200) NOT NULL,
     name        VARCHAR2(200) NOT NULL,
     gender      VARCHAR2(1) NOT NULL,
-    zipcode     INT NOT NULL,
-    address     VARCHAR2(200) NOT NULL,
-    address1    VARCHAR2(200) NOT NULL,
     create_time	DATE DEFAULT SYSDATE,
     last_login	DATE,
     mcheck      INT DEFAULT 1 NOT NULL

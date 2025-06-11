@@ -304,9 +304,7 @@ button {
 }
 
 .train_ktx_ticket {
-    width: 60px;
     height: 22px;
-    background-image: url("../img/ktx_train.png");
     background-repeat: no-repeat;
 }
 
@@ -448,6 +446,7 @@ button {
     padding: 8px;
     font-size: 1.3rem;
     font-weight: 600;
+    cursor:pointer;
 }
 
 .cursor:hover {

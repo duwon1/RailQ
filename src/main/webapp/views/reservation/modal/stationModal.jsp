@@ -9,7 +9,7 @@
     <div class="station-modal-conainer">
         <div class="tit_wrap">
             <div class="tit">
-                <span class="title-title">할인쿠폰 조회</span>
+                <span class="title-title">역 조회</span>
                 <button type="button" class="modal-btn_close" onclick="stationModalClose()"></button>
             </div>
         </div>
