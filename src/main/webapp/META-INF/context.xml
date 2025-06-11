@@ -3,7 +3,7 @@
             auth="Container"
             type="javax.sql.DataSource"
             driverClassName="oracle.jdbc.OracleDriver"
-            url="jdbc:oracle:thin:@34.10.182.38:1521:xe"
+            url="jdbc:oracle:thin:@34.10.182.38:1521:xe?oracle.jdbc.timezoneAsRegion=true"
             username="scott"
             password="tiger"
             maxTotal="20"

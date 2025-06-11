@@ -2,7 +2,7 @@
 CREATE SEQUENCE member_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE reservation_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 CREATE SEQUENCE train_info_seq START WITH 1 INCREMENT BY 1 NOCACHE;
-
+CREATE SEQUENCE board_seq START WITH 1 INCREMENT BY 1 NOCACHE;
 -- 테이블
 -- 멤버
 CREATE TABLE member (
@@ -33,6 +33,16 @@ CREATE TABLE reservation (
         FOREIGN KEY (mnum) REFERENCES member(num),
     CONSTRAINT fk_reservation_train_info
         FOREIGN KEY (tnum) REFERENCES train_information(num)
+);
+
+CREATE TABLE board (
+    num             NUMBER PRIMARY KEY,         -- 게시글 번호
+    title           VARCHAR2(200),              -- 제목
+    content         CLOB,                       -- 글 내용 (Base64 이미지 포함 HTML)
+    create_at       DATE DEFAULT SYSDATE,       -- 작성일
+    view_count      NUMBER DEFAULT 0,           -- 조회수
+    original_filename VARCHAR2(255),            -- 업로드한 실제 파일명
+    renamed_filename  VARCHAR2(255)             -- 서버에 저장된 변경된 파일명
 );
 
 -- 트리거

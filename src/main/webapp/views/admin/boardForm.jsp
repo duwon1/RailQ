@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:import url="header.jsp" />
-<link href="/styles.css" rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
@@ -17,7 +16,7 @@
 <div class="content-area">
     <div class="main-container">
     	<div class="title">
-    		<input type="text" placeholder="제목을 입력하세요.">
+    		<input type="text" name="title" placeholder="제목을 입력하세요.">
     	</div>
     	<input type="file" name="file" id="file">
         <div id="toolbar-container">
@@ -86,14 +85,26 @@
         placeholder: 'Compose an epic...',
         theme: 'snow',
     });
-    
- // 📌 form 전송 전 textarea에 내용 넣기
+
     function prepareSubmit() {
-        const html = quill.root.innerHTML; // 사용자가 작성한 HTML
+        const title = document.querySelector("input[name='title']").value.trim();
+        const html = quill.root.innerHTML.trim();
+        const plainText = quill.getText().trim(); // 내용이 완전 공백인지 검사하기 위해 사용
+
+        if (!title) {
+            alert("제목을 입력해주세요.");
+            return false;
+        }
+
+        if (!plainText) {
+            alert("내용을 입력해주세요.");
+            return false;
+        }
+
         document.getElementById('hidden-content').value = html;
-        console.log(document.getElementById('hidden-content').value);
-        return false; // 폼 제출 계속 진행
+        return true; // ✅ 유효성 검사를 통과하면 폼 제출
     }
 </script>
+
 </body>
 </html>

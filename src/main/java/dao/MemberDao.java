@@ -75,6 +75,20 @@ public class MemberDao {
 		
 		return mList;
 	}
+
+	public void deleteBoard(int num) {
+		try {
+	        conn = DBConn.getConnection();
+	        String sql = "DELETE FROM board WHERE num = ?";
+	        pstmt = conn.prepareStatement(sql);
+	        pstmt.setInt(1, num);
+	        pstmt.executeUpdate();
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        DBConn.close(rs, pstmt, conn);
+	    }
+	}
     
 	
 }
