@@ -20,7 +20,7 @@
         <div class="header-main-container">
             <div class="content-button">
                 <button type="button" data-num="1" onclick="header_click(1)">
-                    <span class="content-circle selected"></span>
+                    <span class="content-circle"></span>
                     <span class="content-title">회원 관리</span>
                 </button>
             </div>

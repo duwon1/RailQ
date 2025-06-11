@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <c:import url="header.jsp" />
+
 <link rel="stylesheet" href="../../css/chat.css">
    <div class="chat-container">
        <div class="chat-header">

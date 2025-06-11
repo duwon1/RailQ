@@ -22,4 +22,13 @@ public class AdminService {
 		
 	}
 
+	public List<BoardDto> getBoardList() {
+		return bDao.selectBoardList();
+	}
+
+	public void deleteBoard(int num) {
+		mDao.deleteBoard(num);
+		
+	}
+
 }
